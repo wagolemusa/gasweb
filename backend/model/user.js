@@ -26,6 +26,10 @@ const userSchema = mongoose.Schema({
         type: String,
         default: "user"
     },
+    referalCode:{
+        type: String,
+        required: false
+    },
     createdAt: {
         type: Date,
         default: Date.now,

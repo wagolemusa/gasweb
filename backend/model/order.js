@@ -53,6 +53,11 @@ const orderSchema = mongoose.Schema({
         type: String,
         default: 'Processing'
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: false,
+      },
     createAt: {
         type: Date,
         default: Date.now,
