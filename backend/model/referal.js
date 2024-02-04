@@ -7,7 +7,7 @@ const referralSchema = mongoose.Schema({
         required: true
      },
      points: {
-        type: Number,
+        type: Number, 
         required: true
      },
 
