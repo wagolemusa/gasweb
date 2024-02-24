@@ -6,11 +6,13 @@ import fs from 'fs'
 import bcrypt from "bcryptjs"
 
 export const registerUser = async(req, res) => {
-    const { name, email, password } = req.body;
+    const { name, username, email, referalCode, password } = req.body;
 
     const user = await User.create({
         name,
+        username,
         email,
+        referalCode,
         password
     })
     res.status(201).json({

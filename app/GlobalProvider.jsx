@@ -4,6 +4,7 @@ import { AuthProvider } from "../context/AuthContext";
 import { ProductProvider } from "../context/ProductContext";
 import { OrderProvider } from "../context/OrderContext"
 import { SessionProvider } from "next-auth/react";
+import { MainProvider } from "../context/MainContext"
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +16,7 @@ export function GlobalProvider({ children }){
     <ToastContainer position="bottom-right" />
     <Provider>
         <AuthProvider>
+            <MainProvider>
             <CartProvider>
                 <OrderProvider>
                     <ProductProvider>
@@ -22,6 +24,7 @@ export function GlobalProvider({ children }){
                     </ProductProvider>
                 </OrderProvider>
             </CartProvider>
+            </MainProvider>
         </AuthProvider>
     </Provider>
         </>

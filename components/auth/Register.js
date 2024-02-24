@@ -11,7 +11,9 @@ const Register = () => {
   const router = useRouter();
     const { error, registerUser, clearErrors } = useContext(AuthContext);
     const [name, setName] = useState("")
+    const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
+    const [referalCode, setReferalCode] = useState("")
     const [password, setPassword] = useState("")
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const Register = () => {
     const submitHandler = (e) => {
         e.preventDefault();
     
-        registerUser({ name, email, password });
+        registerUser({ name, username, email, referalCode, password });
         router.push("/login")
       };
     
@@ -52,6 +54,18 @@ const Register = () => {
         </div>
 
         <div className="mb-4">
+          <label className="block mb-1"> username </label>
+          <input
+            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="mb-4">
           <label className="block mb-1"> Email </label>
           <input
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
@@ -59,6 +73,17 @@ const Register = () => {
             placeholder="Type your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block mb-1"> Invitation Code</label>
+          <input
+            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+            type="text"
+            placeholder="Your invitation Code"
+            value={referalCode}
+            onChange={(e) => setReferalCode(e.target.value)}
             required
           />
         </div>

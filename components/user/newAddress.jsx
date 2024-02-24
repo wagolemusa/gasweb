@@ -9,7 +9,7 @@ import Sidebar from "../layouts/Sidebar";
 import AuthContext from "../../context/AuthContext";
 
 const NewAddress = () => {
-
+    const router = useRouter();
     const { error, addNewAddress, clearErrors } = useContext(AuthContext)
     const { user } = useContext(AuthContext);
 

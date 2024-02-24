@@ -23,7 +23,7 @@ const Pay = ({ addresses}) => {
   };
 
 
-const  setUSer = (user._id)
+// const  setUSer = (user._id)
 
 const amountWithoutTax = cart?.cartItems?.reduce(
   (acc, item) => acc + item.quantity * item.price,
@@ -37,7 +37,11 @@ const totalAmount = (Number(amountWithoutTax) + Number(taxAmount)).toFixed(2);
 const tax = taxAmount;
 const amount = amountWithoutTax;
 
+const points = 2000
 
+const referralcode = user.referalCode;
+
+console.log("userrrrr", referralcode)
 
   const submitHandlerpay = async (e) =>{
     e.preventDefault();
@@ -53,12 +57,15 @@ const amount = amountWithoutTax;
               user,
               orderItems: cart?.cartItems,
               shippingInfo,
-              
+              referralcode,
+              points
+      
           }
          
       );
-        
-      clearCart()
+      
+      clearCart();
+
       if (data) {
           router.push("/me/orders");
       }

@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState } from "react"; 
+import { createContext, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
@@ -71,36 +71,36 @@ export const ProductProvider = ({ children }) => {
 
   // Delete
   const deleteProduct = async (id) => {
-    try{
+    try {
       const { data } = await axios.delete(
         `${process.env.ENVIRONMENT_URL}/api/admin/products/${id}`
       );
-      if(data?.success){
+      if (data?.success) {
         router.replace(`/admin/products`)
       }
-    
-  } catch(error){
-    setError(error?.response?.data.message);
-  }
-}
 
-
-const postReview = async (reviewData) => {
-  try {
-    const { data } = await axios.put(
-      `${process.env.ENVIRONMENT_URL}/api/products/review`,
-      reviewData
-    );
-
-    if (data?.success) {
-      router.replace(`/product/${reviewData?.productId}`);
+    } catch (error) {
+      setError(error?.response?.data.message);
     }
-  } catch (error) {
-    setError(error?.response?.data?.message);
   }
-};
- 
-// clear Errors
+
+
+  const postReview = async (reviewData) => {
+    try {
+      const { data } = await axios.put(
+        `${process.env.ENVIRONMENT_URL}/api/products/review`,
+        reviewData
+      );
+
+      if (data?.success) {
+        router.replace(`/product/${reviewData?.productId}`);
+      }
+    } catch (error) {
+      setError(error?.response?.data?.message);
+    }
+  };
+
+  // clear Errors
   const clearErrors = () => {
     setError(null);
   };

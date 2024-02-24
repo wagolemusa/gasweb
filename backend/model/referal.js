@@ -2,16 +2,18 @@ import mongoose from "mongoose";
 
 const referralSchema = mongoose.Schema({
 
-     referralName: {
+     referralcode:{
         type: String,
-        required: true
+        required: false
      },
      points: {
         type: Number, 
-        required: true
+        required: false
      },
 
     
 })
 
-export default mongoose.models.Referrals || mongoose.model("referrals", referralSchema)
+export default mongoose.models.Referal ||
+   mongoose.model("Referal", referralSchema)
+

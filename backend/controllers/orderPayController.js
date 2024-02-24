@@ -1,6 +1,7 @@
 
 import Order from '../model/order'
 import APIFilters from "../utils/APIFilters"
+import Referal from "../model/referal"
 
 
 
@@ -70,7 +71,7 @@ export const canReview = async (req, res) => {
 export const checkoutSession = async (req, res) => {
   const body = req.body;
   try {  
-   const { tax, amount, totalAmount} = req.body;
+   const { tax, amount, totalAmount, referralcode, points} = req.body;
 
     const order = await Order.create({
       tax,
@@ -79,7 +80,24 @@ export const checkoutSession = async (req, res) => {
       ...req.body,
       
     })
-      res.status(201).json({ 
+
+    let refCode = await Referal.findOne({referralcode});
+   
+    if(refCode){
+      await Referal.findOneAndUpdate(
+        { referralcode },
+        { $inc: { points: 2000 } }
+      )
+      
+    }else{
+      await Referal.create({
+        referralcode,
+        points: 2000
+      })
+  
+    }
+
+    res.status(201).json({ 
         success: true,
         order
     });
@@ -88,6 +106,8 @@ export const checkoutSession = async (req, res) => {
     console.log(error);
   }
 };
+
+
 
 
 
