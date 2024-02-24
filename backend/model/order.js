@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const orderSchema = mongoose.Schema({
+    
     shippingInfo: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,

@@ -8,6 +8,10 @@ const userSchema = mongoose.Schema({
         type: String,
         require: [true, 'Please enter your name']
     },
+    username: {
+        type: String,
+        require: [true, 'Please enter your username']
+    },
     email: {
         type: String,
         required: [true, 'Please enter email'],
