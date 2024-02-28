@@ -13,14 +13,6 @@ const customerSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    location: {
-        type: String,
-        required: true
-    },
-    describeLocation: {
-        type: String,
-        required: false
-    },
     cylinderType: {
         type: String,
         required: true
@@ -36,6 +28,14 @@ const customerSchema = mongoose.Schema({
     numberOfDays: {
         type: String,
         required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    describeLocation: {
+        type: String,
+        required: false
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

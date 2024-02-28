@@ -12,4 +12,4 @@ const branchSchema = mongoose.Schema({
       },
 })
 
-export default mongoose.models.Branchies || mongoose.model("branchies", branchSchema)
+export default mongoose.models.Branch|| mongoose.model("Branch", branchSchema)
