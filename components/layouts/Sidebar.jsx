@@ -88,6 +88,27 @@ const Sidebar = () => {
               </Link>
             </li>
 
+
+            <li>
+              {" "}
+              <Link
+                href="/admin/points"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+                >
+                Points<span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
+
+            <li>
+              {" "}
+              <Link
+                href="/admin/gasbought"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+                >
+                Gas bought<span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
+
             <hr />
           </>
 

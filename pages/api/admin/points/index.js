@@ -7,9 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newCompany } from '../../../../backend/controllers/companyController'
-
-// import { getOrders } from '../../../../backend/controllers/orderController';
+import { newPoint } from '../../../../backend/controllers/pointsController';
 
 
 const router = createRouter({ 
@@ -19,6 +17,6 @@ const router = createRouter({
 dbConnect();
 
 
-router.use(isAuthenticatedUser).post(newCompany);
+router.use(isAuthenticatedUser).post(newPoint);
 
 export default router.handler();

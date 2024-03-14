@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 
 const pointsSchema = mongoose.Schema({
+    customerName: {
+        type: String,
+        required: false
+    },
     phone: {
         type: Number,
         required: true
@@ -15,9 +19,9 @@ const pointsSchema = mongoose.Schema({
         required: true
     },
     points: {
-        type: Number,
-        required: true
-    },
+        type: Number, 
+        required: false
+     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -28,7 +32,7 @@ const pointsSchema = mongoose.Schema({
         default: Date.now,
     }
 })
-export default mongoose.models.Points || mongoose.model("points", pointsSchema)
+export default mongoose.models.Point || mongoose.model("Point", pointsSchema)
 
 
 

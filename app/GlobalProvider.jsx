@@ -7,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { MainProvider } from "../context/MainContext"
 import { CompanyProvider } from "../context/CompanyContext";
 import {CustomerProvider} from "../context/CustomerContext";
+import { PointProvider } from "../context/PointContext"
 
 
 import { ToastContainer } from "react-toastify";
@@ -25,7 +26,9 @@ export function GlobalProvider({ children }) {
                                 <CustomerProvider>
                                 <OrderProvider>
                                     <ProductProvider>
+                                        <PointProvider>
                                         <SessionProvider>{children}</SessionProvider>
+                                        </PointProvider>
                                     </ProductProvider>
                                 </OrderProvider>
                                 </CustomerProvider>
