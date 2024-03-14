@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import MainContext from '../../context/MainContext'
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
  
 const Branch = () => {
 
@@ -12,13 +12,14 @@ const Branch = () => {
     const [branchName, setBranchName] = useState('')
 
     const router = useRouter();
+
     const submitHandler = (e) => {
         e.preventDefault();
         const createBranch = {
             branchName
         }
         newBranchCreate(createBranch)
-        router.replace("/branch")
+        router.replace("/admin/branch")
     }
 
 

@@ -17,11 +17,6 @@ const cylinderStockSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: false,
-      },
     createdAt: {
         type: Date,
         default: Date.now,
@@ -29,4 +24,4 @@ const cylinderStockSchema = mongoose.Schema({
 
 })
 
-export default mongoose.models.CylinderStocks || mongoose.model("cylinderStocks", cylinderStockSchema)
+export default mongoose.models.CylinderStock || mongoose.model("CylinderStock", cylinderStockSchema)

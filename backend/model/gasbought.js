@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
-const gasboughtSchema = mongoose.Schema({
-    companyName:{
-        type: String,
-        required: true
+const gasboughtSchema = new mongoose.Schema({
+    date:{
+       type: String,
+       required: true 
     },
     distributor:{
         type: String,
@@ -11,18 +11,19 @@ const gasboughtSchema = mongoose.Schema({
     },
     cylinders:[
         {
+            brand: { type: String, required: true},
             kgs:{type: Number, required: true},
             quantity: { type: Number, required: true},
             total: { type: Number, required: false}
         }
     ],
-    finalTotal: {
+    finaltotal: {
         type: Number,
         required: true
     },
     cashPaid: {
         type: String,
-        required: true
+        required: false
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

@@ -4,10 +4,10 @@ import axios from "axios"
 import { useRouter } from "next/navigation"
 
 
-const MainContext = createContext();
+const CustomerContext = createContext();
 
 
-export const MainProvider = ({ children }) => {
+export const CustomerProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
     const [updated, setUpdated] = useState(false);
@@ -15,11 +15,11 @@ export const MainProvider = ({ children }) => {
     const router = useRouter();
 
     // creating the branch
-    const newBranchCreate = async (branch) => {
+    const newCustomerCreate = async (customer) => {
         try {
             const { data } = await axios.post(
-              `${process.env.ENVIRONMENT_URL}/api/admin/branch`,
-              branch
+              `${process.env.ENVIRONMENT_URL}/api/admin/customer`,
+              customer
             );
       
             if (data) {
@@ -34,18 +34,19 @@ export const MainProvider = ({ children }) => {
 
 
     return (
-        <MainContext.Provider
+        <CustomerContext.Provider
 
         value={{
           
-            newBranchCreate,
+            newCustomerCreate,
+            // newCompanyCreate
         }}
 
         >
             {children}
-        </MainContext.Provider>
+        </CustomerContext.Provider>
     )
 }
 
-export default MainContext;
+export default CustomerContext;
 
