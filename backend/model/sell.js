@@ -5,17 +5,25 @@ const sellSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    cylinders:[
-        {
-            cylinderType:{type: String, required: true},
-            kgs:{type: Number, required: true},
-            quantity: { type: Number, required: true},
-            total: { type: Number, required: false}
-        }
-    ],
-    finalTotal: {
+    cylinderSize: {
+        type: String,
+        required: true
+    },
+    amount: {
         type: Number,
         required: true
+    },
+    time: {
+        type: Number,
+        required: true
+    },
+    customerName: {
+        type: String,
+        required: false
+    },
+    phone: {
+        type: String,
+        required: false
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
