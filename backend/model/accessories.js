@@ -12,5 +12,5 @@ const accessorySchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.models.Accessory || mongoose.model("Accessory",accessorySchema)
+export default mongoose.models.Accessories || mongoose.model("Accessories",accessorySchema)
 
