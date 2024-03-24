@@ -2,33 +2,25 @@ import mongoose from "mongoose";
 
 
 const promocodeSchema = mongoose.Schema({
-    promo: {
+    code: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     amount: {
         type: Number ,
         required: true
     },
-    date: {
-        type: String,
+    expirationDate: {
+        type: Date,
         required: true
     },
-    time: {
-        type: String,
-        required: true
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: false,
-      },
     createdAt: {
         type: Date,
         default: Date.now,
     }
 })
-export default mongoose.models.Promocode || mongoose.model("promocode", promocodeSchema)
+export default mongoose.models.Promocode || mongoose.model("Promocode", promocodeSchema)
 
 
 

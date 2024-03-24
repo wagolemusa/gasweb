@@ -130,6 +130,25 @@ const Sidebar = () => {
               </Link>
             </li>
 
+            <li>
+              {" "}
+              <Link
+                href="/admin/promocode"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+                >
+                Promo Code<span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
+            <li>
+              {" "}
+              <Link
+                href="/admin/invetory"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+                >
+                Inveyory<span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
+
             <hr />
           </>
 

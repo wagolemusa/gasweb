@@ -1,29 +1,32 @@
+
+
 'use client'
 
 import React, { useContext, useEffect, useState } from "react";
-import MainContext from '../../context/MainContext'
+import InvetoryContext from '../../context/InvetoryContext'
+
 import { useRouter } from "next/navigation";
  
-const Branch = () => {
+const Invetory = () => {
 
 
-    const { newBranchCreate } = useContext(MainContext);
+    const { newInvetoryCreate } = useContext(InvetoryContext);
 
-    const [branchName, setBranchName] = useState('')
-    const [employee, setEmlpoyee] = useState('')
-    const [location, setLocation] = useState('')
+    const [nameaccessory, setNameaccessory] = useState('')
+    const [amount, setAmount] = useState('')
+    const [added_stock, setAdded_stock] = useState('')
 
     const router = useRouter();
 
     const submitHandler = (e) => {
         e.preventDefault();
         const createBranch = {
-            branchName,
-            employee,
-            location
+            nameaccessory,
+            amount,
+            added_stock,
         }
-        newBranchCreate(createBranch)
-        router.replace("/admin/branch")
+        newInvetoryCreate(createBranch)
+        router.replace("/admin/invetory")
     }
 
 
@@ -31,39 +34,39 @@ const Branch = () => {
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-8 py-8">
             <form onSubmit={submitHandler}>
                 <div className="mb-4">
-                    <label className="block mb-1"> Branch Name</label>
+                    <label className="block mb-1">Product Name</label>
                     <input
                         type="text"
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         placeholder="Branch Name"
-                        name="name"
-                        value={branchName}
-                        onChange={(e) => setBranchName(e.target.value)}
+                        name="nameaccessory"
+                        value={nameaccessory}
+                        onChange={(e) => setNameaccessory(e.target.value)}
                         required
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block mb-1"> Employee Name</label>
+                    <label className="block mb-1"> Amount</label>
                     <input
                         type="text"
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        placeholder="Employee Name"
-                        name="employee"
-                        value={employee}
-                        onChange={(e) => setEmlpoyee(e.target.value)}
+                        placeholder="Amount"
+                        name="amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
                         required
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block mb-1">Describe the location</label>
+                    <label className="block mb-1">Quantity</label>
                     <input
                         type="text"
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        placeholder="Location"
-                        name="location"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="Quantity"
+                        name="added_stock"
+                        value={added_stock}
+                        onChange={(e) => setAdded_stock(e.target.value)}
                         required
                     />
                 </div>
@@ -72,11 +75,11 @@ const Branch = () => {
                     type="submit"
                     className="my-2 px-4 py-2 text-center inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 w-full"
                 >
-                    Create Branch
+                    Create Accessory
                 </button>
             </form>
         </div>
     )
 }
 
-export default Branch;
+export default Invetory;

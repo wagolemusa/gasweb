@@ -8,7 +8,7 @@ const cylinderStockSchema = mongoose.Schema({
     },
     cylinders:[
         {
-            cylinderType:{type: String, required: true},
+            brand:{type: String, required: true},
             kgs:{type: Number, required: true},
             quantity: { type: Number, required: true},
         }

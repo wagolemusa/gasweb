@@ -5,27 +5,22 @@ const addressSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  city: {
-    type: String,
-    required: true,
-  },
-  state: {
-    type: String,
-    required: true,
-  },
   phoneNo: {
     type: String,
     required: true,
   },
-  zipCode: {
+  locationArea: {
     type: String,
-    required: true,
+    required: false,
   },
-  country: {
+  mapurl: {
     type: String,
-    required: true,
+    required: false,
   },
-
+  describeLocation: {
+    type: String,
+    required: false
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

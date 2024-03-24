@@ -16,8 +16,8 @@ const Customer = () => {
     describeLocation: "",
     cylinderType: "",
     cylinderSize: "",
-    points: "",
     numberOfDays: "",
+    mapurl: "",
   });
 
   const { 
@@ -26,10 +26,10 @@ const Customer = () => {
     email,
     cylinderType,
     cylinderSize,
-    points,
     numberOfDays, 
     describeLocation, 
-    location,} = customer;
+    location,
+    mapurl} = customer;
 
   const onChange = (e) => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
@@ -114,19 +114,6 @@ const Customer = () => {
             required
           />
         </div>
-
-        <div className="mb-4">
-          <label className="block mb-1"> Points </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Points"
-            name="points"
-            value={points}
-            onChange={onChange}
-            required
-          />
-        </div>
         <div className="mb-4">
           <label className="block mb-1"> Number of days </label>
           <input
@@ -151,6 +138,18 @@ const Customer = () => {
             onChange={onChange}
             required
           />
+        </div>  
+        <div className="mb-4 mt-5">
+          <label className="block mb-1"> Map Url or Codinates </label>
+          <input
+            type="text"
+            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+            placeholder="Paste Map Url or Codinates"
+            name="mapurl"
+            value={mapurl}
+            onChange={onChange}
+            required
+          ></input>
         </div>
 
         <div className="mb-4 mt-5">

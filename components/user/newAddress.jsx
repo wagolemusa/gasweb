@@ -15,11 +15,10 @@ const NewAddress = () => {
 
     const countriesList = Object.values(countries);
     const [ street, setStreet ] = useState('');
-    const [ city, setCity ] = useState('');
-    const [ state, setState ] = useState('');
-    const [ zipCode, setZipCode] = useState('');
     const [ phoneNo, setPhoneNo ] = useState('');
-    const [ country, setCountry ] = useState('');
+    const [locationArea, setLocationArea] = useState('');
+    const [ mapurl, setMapurl] = useState('');
+    const [describeLocation, setDescribeLocation] = useState('');
 
     useEffect(() => {
       if (error) {
@@ -33,11 +32,10 @@ const NewAddress = () => {
 
         const newAddress = {
             street,
-            city,
-            state,
-            zipCode,
             phoneNo,
-            country,
+            locationArea,
+            mapurl,
+            describeLocation,
             user
         }
 
@@ -73,68 +71,49 @@ const NewAddress = () => {
                       onChange={(e) => setStreet(e.target.value)}
                     />
                   </div>
-
-                  <div className="grid md:grid-cols-2 gap-x-3">
-                    <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> City </label>
-                      <input
-                        className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        type="text"
-                        placeholder="Type your city"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> State </label>
-                      <input
-                        className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        type="text"
-                        placeholder="Type state here"
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                      />
-                    </div>
+                  <div className="mb-4 md:col-span-2">
+                    <label className="block mb-1"> Phone  </label>
+                    <input
+                      className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                      type="number"
+                      placeholder="Phone Number"
+                      value={phoneNo}
+                      onChange={(e) => setPhoneNo(e.target.value)}
+                    />
                   </div>
-
-                  <div className="grid md:grid-cols-2 gap-x-2">
-                    <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> ZIP code </label>
-                      <input
-                        className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        type="number"
-                        placeholder="Type zip code here"
-                        value={zipCode}
-                        onChange={(e) => setZipCode(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> Phone No </label>
-                      <input
-                        className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        type="number"
-                        placeholder="Type phone no here"
-                        value={phoneNo}
-                        onChange={(e) => setPhoneNo(e.target.value)}
-                      />
-                    </div>
+                  <div className="mb-4 md:col-span-2">
+                    <label className="block mb-1"> Area of your Location </label>
+                    <input
+                      className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                      type="text"
+                      placeholder=""
+                      value={locationArea}
+                      onChange={(e) => setLocationArea(e.target.value)}
+                    />
                   </div>
 
                   <div className="mb-4 md:col-span-2">
-                    <label className="block mb-1"> Country </label>
-                    <select className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                    >
-                      {countriesList.map((country) => (
-                        <option key={country.name} value={country.name}>
-                          {country.name}
-                        </option>
-                      ))}
-                    </select>
+                    <label className="block mb-1"> Share your Map or Codinates </label>
+                    <input
+                      className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                      type="text"
+                      placeholder="Share your map or Codinates"
+                      value={mapurl}
+                      onChange={(e) => setMapurl(e.target.value)}
+                    />
                   </div>
+                  <div className="mb-4 md:col-span-2">
+                    <label className="block mb-1"> Describe your Location  </label>
+                    <input
+                      className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                      type="text"
+                      placeholder="Describe your Location"
+                      value={describeLocation}
+                      onChange={(e) => setDescribeLocation(e.target.value)}
+                    />
+                  </div>
+       
+
 
                   <button
                     type="submit"

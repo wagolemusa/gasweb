@@ -21,10 +21,6 @@ const customerSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    points: {
-        type: String,
-        required: true
-    },
     numberOfDays: {
         type: String,
         required: true
@@ -34,6 +30,10 @@ const customerSchema = mongoose.Schema({
         required: true
     },
     describeLocation: {
+        type: String,
+        required: false
+    },
+    mapurl: {
         type: String,
         required: false
     },
