@@ -15,7 +15,7 @@ const cylinderStockSchema = mongoose.Schema({
     ],
     totalCylinders:{
         type: Number,
-        required: true
+        required: false
     },
     createdAt: {
         type: Date,

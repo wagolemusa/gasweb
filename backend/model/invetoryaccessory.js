@@ -13,7 +13,7 @@ const invetoryaccessorySchema = new mongoose.Schema({
     initial_quantity: {
         type: Number,
         default: 0
-    },
+    },  
     added_stock: {
         type: Number,
         default: 0

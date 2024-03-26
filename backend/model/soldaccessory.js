@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const soldaccessory =  new mongoose.Schema({
-    item: {
+    nameaccessory: {
         type: String,
         required: true
     },
