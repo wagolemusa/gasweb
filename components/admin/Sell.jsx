@@ -1,88 +1,72 @@
 "use client";
 
-import CustomerContext from "../../context/CustomerContext";
 import React, { useContext, useState } from "react";
+import SellContext from "../../context/SellContext";
 
-const Customer = () => {
-  const { newCustomerCreate } = useContext(CustomerContext);
+const NewSell = () => {
+  const { newSellCreate } = useContext(SellContext);
 
 
 
-  const [customer, setCustomer] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    location: "",
-    describeLocation: "",
-    cylinderType: "",
+  const [sell, setSell] = useState({
+    branch: "",
     cylinderSize: "",
-    numberOfDays: "",
-    mapurl: "",
+    cylinderType: "",
+    amount: "",
+    time: "",
+    customerName: "",
+    phone: "",
+
   });
 
   const { 
-    name,
-    phone,
-    email,
+    branch,
     cylinderType,
     cylinderSize,
-    numberOfDays, 
-    describeLocation, 
-    location,
-    mapurl} = customer;
+    amount,
+    time,
+    customerName, 
+    phone,} = sell;
 
   const onChange = (e) => {
-    setCustomer({ ...customer, [e.target.name]: e.target.value });
+    setSell({ ...sell, [e.target.name]: e.target.value });
   };
 
 
   const submitHandler = (e) => {
     e.preventDefault();
-    newCustomerCreate(customer);
+    newSellCreate(sell);
   };
   
 
   return (
     <section className="container max-w-3xl p-6 mx-auto">
       <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black mb-8">
-        Create New Customer
+        Create Sales
       </h1>
 
       <form onSubmit={submitHandler}>
         <div className="mb-4">
-          <label className="block mb-1"> Name </label>
+          <label className="block mb-1"> Branch </label>
           <input
             type="text"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
             placeholder="Product name"
-            name="name"
-            value={name}
+            name="branch"
+            value={branch}
             onChange={onChange}
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="block mb-1"> Phone </label>
+          <label className="block mb-1"> Cylinder Size </label>
           <input
             type="text"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Phone Number"
-            name="phone"
-            value={phone}
-            onChange={onChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block mb-1"> Email </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Email"
-            name="email"
-            value={email}
+            placeholder="Cylinder Size"
+            name="cylinderSize"
+            value={cylinderSize}
             onChange={onChange}
             required
           />
@@ -101,79 +85,67 @@ const Customer = () => {
           />
         </div>
 
-
         <div className="mb-4">
-          <label className="block mb-1"> Cylinder Size </label>
+          <label className="block mb-1"> Amount </label>
           <input
             type="number"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Cylinder Size"
-            name="cylinderSize"
-            value={cylinderSize}
+            placeholder="Amount"
+            name="amount"
+            value={amount}
             onChange={onChange}
             required
           />
         </div>
+
+
         <div className="mb-4">
-          <label className="block mb-1"> Number of days </label>
+          <label className="block mb-1"> Time</label>
           <input
-            type="text"
+            type="time"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Numbers of Days"
-            name="numberOfDays"
-            value={numberOfDays}
+            placeholder="Time"
+            name="time"
+            value={time}
             onChange={onChange}
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="block mb-1"> Location </label>
+          <label className="block mb-1"> Customer Name </label>
           <input
             type="text"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Location"
-            name="location"
-            value={location}
+            placeholder="Customer Name"
+            name="customerName"
+            value={customerName}
             onChange={onChange}
             required
           />
-        </div>  
-        <div className="mb-4 mt-5">
-          <label className="block mb-1"> Map Url or Codinates </label>
+        </div>
+        <div className="mb-4">
+          <label className="block mb-1"> Phone </label>
           <input
             type="text"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Paste Map Url or Codinates"
-            name="mapurl"
-            value={mapurl}
+            placeholder="Phone"
+            name="phone"
+            value={phone}
             onChange={onChange}
             required
-          ></input>
-        </div>
-
-        <div className="mb-4 mt-5">
-          <label className="block mb-1"> Describe Location </label>
-          <textarea
-            rows="4"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Describe Location"
-            name="describeLocation"
-            value={describeLocation}
-            onChange={onChange}
-            required
-          ></textarea>
+          />
         </div>
 
         <button
           type="submit"
           className="my-2 px-4 py-2 text-center inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 w-full"
         >
-          Create Product
+          Create Sell
         </button>
       </form>
     </section>
   );
 };
 
-export default Customer;
+export default NewSell;

@@ -7,12 +7,14 @@ import { SessionProvider } from "next-auth/react";
 import { MainProvider } from "../context/MainContext"
 import { CompanyProvider } from "../context/CompanyContext";
 import {CustomerProvider} from "../context/CustomerContext";
-import { PointProvider } from "../context/PointContext"
+import { PointProvider } from "../context/PointContext";
+import { SellProvider } from "../context/SellContext";
 
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Provider from "./Provider";
+import { InvetoryProvider } from "../context/InvetoryContext";
 
 export function GlobalProvider({ children }) {
     return (
@@ -27,7 +29,11 @@ export function GlobalProvider({ children }) {
                                 <OrderProvider>
                                     <ProductProvider>
                                         <PointProvider>
-                                        <SessionProvider>{children}</SessionProvider>
+                                            <SellProvider>
+                                                <InvetoryProvider>
+                                            <SessionProvider>{children}</SessionProvider>
+                                                </InvetoryProvider>
+                                            </SellProvider>
                                         </PointProvider>
                                     </ProductProvider>
                                 </OrderProvider>

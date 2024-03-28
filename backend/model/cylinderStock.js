@@ -8,14 +8,15 @@ const cylinderStockSchema = mongoose.Schema({
     },
     cylinders:[
         {
-            cylinderType:{type: String, required: true},
+            brand:{type: String, required: true},
             kgs:{type: Number, required: true},
             quantity: { type: Number, required: true},
+            total: { type: Number, required: false}
         }
     ],
-    totalCylinders:{
+    finaltotal:{
         type: Number,
-        required: true
+        required: false
     },
     createdAt: {
         type: Date,

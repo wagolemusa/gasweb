@@ -9,12 +9,16 @@ const sellSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    cylinderType: {
+        type: String,
+        required: true
+    },
     amount: {
         type: Number,
         required: true
     },
     time: {
-        type: Number,
+        type: String,
         required: true
     },
     customerName: {
@@ -25,11 +29,6 @@ const sellSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: false,
-      },
     createdAt: {
         type: Date,
         default: Date.now,

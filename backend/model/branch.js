@@ -5,6 +5,14 @@ const branchSchema = mongoose.Schema({
         type: String,
         required: true
      },
+     employee: {
+      type: String,
+      required: false
+     },
+     location: {
+      type: String,
+      required: false
+     },
      user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
