@@ -11,9 +11,10 @@ const cylinderStockSchema = mongoose.Schema({
             brand:{type: String, required: true},
             kgs:{type: Number, required: true},
             quantity: { type: Number, required: true},
+            total: { type: Number, required: false}
         }
     ],
-    totalCylinders:{
+    finaltotal:{
         type: Number,
         required: false
     },
