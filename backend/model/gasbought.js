@@ -36,4 +36,5 @@ const gasboughtSchema = new mongoose.Schema({
     }
     
 })
-export default mongoose.models.Gasbought || mongoose.model("Gasbought",  gasboughtSchema)
+export default mongoose.models.Gasbought ||
+mongoose.model("Gasbought",  gasboughtSchema)

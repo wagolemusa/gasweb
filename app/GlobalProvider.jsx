@@ -9,6 +9,7 @@ import { CompanyProvider } from "../context/CompanyContext";
 import {CustomerProvider} from "../context/CustomerContext";
 import { PointProvider } from "../context/PointContext";
 import { SellProvider } from "../context/SellContext";
+import { GasProvider} from "../context/GasContext"
 
 
 import { ToastContainer } from "react-toastify";
@@ -31,7 +32,9 @@ export function GlobalProvider({ children }) {
                                         <PointProvider>
                                             <SellProvider>
                                                 <InvetoryProvider>
+                                                    <GasProvider>
                                             <SessionProvider>{children}</SessionProvider>
+                                                </GasProvider>
                                                 </InvetoryProvider>
                                             </SellProvider>
                                         </PointProvider>

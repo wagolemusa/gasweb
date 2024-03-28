@@ -26,8 +26,3 @@ export const newGassBought = async(req, res, next) => {
 
 
 
-
-
-
-
-
