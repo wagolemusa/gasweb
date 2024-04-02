@@ -35,22 +35,6 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
         {user?.role === 'admin' && (
 
 <ul className='sidebar-list'>
-
-<div class="dropdown">
-<li className='sidebar-list-item'>
-<BiBookmarkAltPlus className='icon'/>
-  <a class="dropbtn">Accesories</a>
-  <div class="dropdown-content">
-  <a href="/admin/products/new">
-     Post Accesories
-    </a>
-    <a href="/admin/accessory">Accesory Category</a>
-    <a href="/admin/products">Accessory</a>
-    <a href="/admin/invetory">New Invetory</a>
-  </div>
-  </li>
-</div>
-
 <li className='sidebar-list-item'>
 <BsGrid1X2Fill className='icon'/>
     <a href="/admin/orders">
@@ -111,6 +95,20 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
          Promo code
     </a>
 </li>
+<div class="dropdown">
+<li className='sidebar-list-item'>
+<BiBookmarkAltPlus className='icon'/>
+  <a class="dropbtn">Accesories</a>
+  <div class="dropdown-content">
+  <a href="/admin/products/new">
+     Post Accesories
+    </a>
+    <a href="/admin/accessory">Accesory Category</a>
+    <a href="/admin/products">Accessory</a>
+    <a href="/admin/invetory">New Invetory</a>
+  </div>
+  </li>
+</div>
 <li className='sidebar-list-item'>
 <FcSalesPerformance className='icon'/>
     <a href="/admin/sold">
@@ -131,6 +129,8 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
          Post Gas 
     </a>
 </li>
+
+
 
 </ul>
 
