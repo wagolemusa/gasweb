@@ -2,6 +2,7 @@ import getRawBody from "raw-body";
 import Stripe from "stripe";
 import Order from '../model/order'
 import APIFilters from "../utils/APIFilters"
+import ErrorHandler from "../utils/errorHandler";
 const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
 
 
@@ -25,7 +26,7 @@ const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
 
 
 // Get orders by ID
-export const getOrder = async (req, res) => {
+export const getOrder = async (req, res, next) => {
   const order = await Order.findById(req.query.id).populate(
     "shippingInfo user"
   );

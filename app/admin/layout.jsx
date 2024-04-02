@@ -1,30 +1,33 @@
-import Sidebar from "../../components/layouts/Sidebar";
+'use client'
 
+import Sidebarnav from "../../components/layouts/Sidebar2"
+import DashordHeader from "../../components/layouts/DashordHeader"
+import { useState } from "react";
 
-export default function AdminLayout({ children }) {
+const AdminLayout = ({ children }) => {
+    const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+
+    const OpenSidebar = () => {
+        setOpenSidebarToggle(!openSidebarToggle)
+    }
     return (
-        <>
-            <section className="py-5 sm:py-7 bg-blue-100">
-                <div className="container max-w-screen-xl max-auto px-4">
-                    <h1 className="text-blod text-2xl">Admin Dashboard</h1>
-                </div>
+        <section className="py-20">
+            <DashordHeader OpenSidebar={OpenSidebar} />
+            <div className="mx-auto px-4">
+                <div className="flex flex-col md:flex-row -mx-4">
+                    {/* <Sidebar /> */}
 
-            </section>
-
-            <section className="py-10">
-                <div className="container max-w-screen-xl mx-auto px-4">
-                    <div className="flex flex-col md:flex-row -mx-4">
-                            <Sidebar />
-                        <main className="md:w-1/3 lg:w-3/4 px-5">
-                            <main className="md:w-1/8 lg:w-3/8 px-8">
-                            {children }
-                            </main>
+                    <Sidebarnav openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+                    <main className="md:w-1/3 lg:w-3/4 px-5">
+                        <main className="md:w-1/8 lg:w-3/8 px-8">
+                            {children}
                         </main>
-                    </div>
+                    </main>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 }
+export default AdminLayout;
 
 
