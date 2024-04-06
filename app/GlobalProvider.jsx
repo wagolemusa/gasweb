@@ -33,7 +33,7 @@ export function GlobalProvider({ children }) {
                                             <SellProvider>
                                                 <InvetoryProvider>
                                                     <GasProvider>
-                                            <SessionProvider>{children}</SessionProvider>
+                                                    <SessionProvider>{children}</SessionProvider>
                                                 </GasProvider>
                                                 </InvetoryProvider>
                                             </SellProvider>
