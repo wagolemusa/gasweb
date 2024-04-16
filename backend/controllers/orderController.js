@@ -10,10 +10,11 @@ const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
   export const getOrders = async (req, res) => {
     const resPerPage = 2;
     const ordersCount = await Order.countDocuments();
+
     const apiFilters = new APIFilters(Order.find(), req.query).pagination(
       resPerPage
     );
-  const orders = await apiFilters.query
+  const orders = await apiFilters.query.find()
     .populate("shippingInfo user");
 
   res.status(200).json({
@@ -38,6 +39,7 @@ export const getOrder = async (req, res, next) => {
     order,
   });
 };
+
 
 // update user Order
 export const updateOrder = async (req, res) => {

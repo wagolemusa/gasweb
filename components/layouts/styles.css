@@ -721,8 +721,28 @@
 .dropdown:hover .dropbtn {}
 
 
+
+/* customer table */
+.customertable {
+  padding: 50px;
+  /* width: 50em; */
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
 /* Medium <= 992px */
-  
+label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.list-group-item{
+  font-size: 20px;
+  font-weight: 600;
+}
+ 
+.list-group-item span {
+  color: #d50000;
+}
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -745,9 +765,19 @@
   .sidebar-title > span {
     display: inline;
   }
+  .customertable {
+    padding: 30px;
+    width: 500px;
+    /* padding-left: 300px;
+    padding-right: 300px; */
+  }
 }
 /* Small <= 768px */
   
+/* .customer{
+  width: 1090px;
+} */
+
 @media screen and (max-width: 768px) {
   .main-cards {
     grid-template-columns: 1fr;
@@ -759,6 +789,16 @@
     grid-template-columns: 1fr;
     margin-top: 30px;
   }
+  .customertable {
+     width: 200px; 
+    padding-left: 5px;
+    padding-right: 5px; 
+  }
+ 
+  .main2 h1{
+      font-size: 18px;
+  }
+  
 }
 
 /* Extra Small <= 576px */
@@ -767,4 +807,9 @@
   .hedaer-left {
     display: none;
   }
+  .customertable {
+    width: 200px; 
+   padding-left: 50px;
+   padding-right: 50px; 
+ }
 }
