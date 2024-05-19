@@ -1,24 +1,37 @@
 "use client";
+import CustomerContext from "../../../context/CustomerContext";
+import React, {useEffect, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
-import CustomerContext from "../../context/CustomerContext";
-import React, { useContext, useState } from "react";
-
-const Customer = () => {
-  const { newCustomerCreate } = useContext(CustomerContext);
-
+const UpdateCustomePage = ({ data, id }) => {
+    
+  const {updateCustomer, updated, setUpdated, error } = useContext(CustomerContext);
 
 
   const [customer, setCustomer] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    location: "",
-    describeLocation: "",
-    cylinderType: "",
-    cylinderSize: "",
-    numberOfDays: "",
-    mapurl: "",
+    name: data?.name,
+    phone: data?.phone,
+    email: data?.email,
+    cylinderType: data?.cylinderType,
+    cylinderSize: data?.cylinderSize,
+    numberOfDays: data?.numberOfDays,
+    describeLocation: data?.describeLocation,
+    location: data?.location,
+    mapurl: data?.mapurl
+   
   });
+
+
+  useEffect(() => {
+    if(updated){
+        toast.success('Customer Updated')
+        setUpdated(false)
+    }
+    if(error) {
+        toast.error(error)
+        clearErrors()
+    }
+  }, [error, updated])
 
   const { 
     name,
@@ -35,17 +48,19 @@ const Customer = () => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
   };
 
-
   const submitHandler = (e) => {
     e.preventDefault();
-    newCustomerCreate(customer);
+    updateCustomer(customer, data?._id);
   };
   
-
+  
   return (
-    <section className="container max-w-3xl p-6 mx-auto">
-      <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black mb-8">
-        Create New Customer
+    <section 
+    style={{ maxWidth: "700px" }}
+    className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+
+      <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+        <a href="/admin/customer">Back</a> &nbsp;&nbsp;Update  Customer
       </h1>
 
       <form onSubmit={submitHandler}>
@@ -148,7 +163,7 @@ const Customer = () => {
             name="mapurl"
             value={mapurl}
             onChange={onChange}
-            required
+            
           ></input>
         </div>
 
@@ -169,11 +184,11 @@ const Customer = () => {
           type="submit"
           className="my-2 px-4 py-2 text-center inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 w-full"
         >
-          Create Product
+          Update Customers
         </button>
       </form>
     </section>
   );
 };
 
-export default Customer;
+export default UpdateCustomePage;

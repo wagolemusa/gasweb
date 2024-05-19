@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { getCustomers, newCustomer,getCustomerById } from '../../../../backend/controllers/customerController';
+import { getCustomers, newCustomer,getCustomerById, updateCustomer } from '../../../../backend/controllers/customerController';
 
 // import { getOrders } from '../../../../backend/controllers/orderController';
 
@@ -18,9 +18,10 @@ const router = createRouter({
 
 dbConnect();
 
-
+router.use(isAuthenticatedUser).put(updateCustomer);
+router.use(isAuthenticatedUser).get(getCustomerById);
 router.use(isAuthenticatedUser).post(newCustomer);
 router.use(isAuthenticatedUser).get(getCustomers)
-router.use(isAuthenticatedUser).get(getCustomerById);
+
 
 export default router.handler();

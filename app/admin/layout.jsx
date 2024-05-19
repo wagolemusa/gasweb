@@ -18,8 +18,8 @@ const AdminLayout = ({ children }) => {
                     {/* <Sidebar /> */}
 
                     <Sidebarnav openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
-                    <main className="md:w-1/3 lg:w-3/4 px-5">
-                        <main className="md:w-1/8 lg:w-3/8 px-8">
+                    <main className="main2 md:w-1/2 lg:w-3/4">
+                        <main className="md:w-1/8 lg:w-3/8">
                             {children}
                         </main>
                     </main>

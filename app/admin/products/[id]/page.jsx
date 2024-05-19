@@ -9,9 +9,9 @@ const getProducts = async (id) => {
 }
 
 const AllProducts =  async({ params }) => {
-    const data = await getProducts(params.id);
 
-    return <UpdateProduct data={data.product} />
-}
+    const data = await getProducts(params.id);
+    return <UpdateProduct data={data.product} />                     
+} 
 
 export default AllProducts;
