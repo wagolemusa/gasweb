@@ -31,6 +31,17 @@ const gasSchema = new mongoose.Schema({
         type: String,
         default: "normal"
     },
+    images: [
+        {
+            public_id: {
+                type: String,
+            },
+            url: {
+                type: String,
+            },
+
+        }
+    ],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
