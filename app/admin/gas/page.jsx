@@ -1,7 +1,7 @@
-import NewGas from "../../../components/admin/Gas";
+import GetGasdata from "../../../components/admin/gaspost/Gasdata";
 
 const Gaspage = () => {
-    return <NewGas />
+    return <GetGasdata />
 }
 
 export default Gaspage;

@@ -1,6 +1,6 @@
 "use client";
 
-import GasContext from "../../context/GasContext";
+import GasContext from "../../../context/GasContext";
 import React, { useContext, useState } from "react";
 
 const NewGas = () => {
@@ -28,9 +28,13 @@ const NewGas = () => {
   
 
   return (
-    <section className="container max-w-3xl p-6 mx-auto">
-      <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black mb-8">
-        Create New Gas
+    <section
+
+    style={{ maxWidth: "700px" }}
+    className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+
+      <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+        <a href="/admin/gas">Back</a> &nbsp;&nbsp;Create Gas
       </h1>
 
       <form onSubmit={submitHandler}>
@@ -76,7 +80,7 @@ const NewGas = () => {
 
 
 
-        <div className="grid md:grid-cols-2 gap-x-2 mt-5">
+        <div className="grid md:grid-cols-2 gap-x-2 mt-3">
           <div className="mb-4">
             <label className="block mb-1"> Price </label>
             <div className="relative">
@@ -94,7 +98,7 @@ const NewGas = () => {
             </div>
           </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-x-2 mt-5">
+          <div className="grid md:grid-cols-2 gap-x-2 mt-3">
           <div className="mb-4">
             <label className="block mb-1"> Discount </label>
             <div className="relative">

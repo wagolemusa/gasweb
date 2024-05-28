@@ -1,5 +1,7 @@
 
+import { genSaltSync } from 'bcryptjs'
 import Gas from '../model/gas'
+import APIFilters from '../utils/APIFilters';
 
 
 // Save gas 
@@ -15,6 +17,111 @@ export const newGas = async(req, res) => {
     }catch(error){
         console.log(error)
     }
+}
+
+
+
+// Get All Customers
+export  const getGasData = async(req, res, next) =>{
+
+    const resPerPage = 1
+
+    const apiFilters = new APIFilters(Gas.find(), req.query)
+    .search()
+    .filter()
+    // const gasDeta = await Product.find();
+    const gasDeta = await apiFilters.query.clone();
+    const filterdProductsCount = gasDeta.length
+    apiFilters.pagination(resPerPage);
+
+    res.status(200).json({
+        resPerPage,
+        filterdProductsCount,
+        gasDeta,
+    });
+}
+
+
+// get Gas by Id
+export const getGasById = async(req, res) =>{
+    const getGas = await Gas.findById(req.query.id);
+    if(!getGas){
+        return res.status(401).json({
+            message: "No Data fund"
+        })
+    }
+    return res.status(201).json({
+        getGas
+    })
+}
+
+
+
+// update Products
+export const updateGas = async(req, res, next) => {
+    let gas = await Gas.findById(req.query.id);
+
+    if(!gas){
+        res.status(404).json({
+            error: "No Gas found"
+        })
+    }
+    gas = await Gas.findByIdAndUpdate(req.query.id, req.body)
+    res.status(200).json({
+        gas,
+    })
+};
+
+
+
+// Delete images associated with the product
+export const deleteGas = async(req, res, next) => {
+    let gas = await Gas.findById(req.query.id);
+
+    if(!gas){
+        res.status(404).json({
+            error: "No Data found"
+        })
+    }  
+
+    await genSaltSync.deleteOne();
+    res.status(200).json({
+        success: true,
+    })
+};
+
+
+
+// upload multiple images
+export const uploadProductImages = async(req, res, next) => {
+
+    let gas = await Gas.findById(req.query.id);
+
+    if(!gas){
+        res.status(404).json({
+            error: "Product not found"
+        })
+    }
+
+    const uploader = async(path) => await uploads(path, "npc");
+    
+    const urls = []
+    const files = req.files;
+
+    for(const file of files){
+        const { path } = file
+        console.log("path", path)
+        const imgUrl = await uploader(path)
+        urls.push(imgUrl)
+        fs.unlinkSync(path)
+    }
+    gas = await Gas.findByIdAndUpdate(req.query.id, {
+        images: urls,
+    });
+    res.status(200).json({
+        data: urls,
+        gas,
+    })
 }
 
 

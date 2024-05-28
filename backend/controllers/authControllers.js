@@ -112,7 +112,7 @@ export const deleteUsers = async (req, res) => {
 
 // get all users
 export const getUsers = async (req, res) => {
-  const resPerPage = 2;
+  const resPerPage = 5;
   const userCount = await User.countDocuments();
 
   const apiFilters = new APIFilters(User.find(), req.query).pagination(

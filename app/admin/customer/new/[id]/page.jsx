@@ -11,6 +11,7 @@ const getCustomerById = async (id) => {
 const Allcustomers =  async({ params }) => {
 
     const data = await getCustomerById(params.id);
+    
     return <Getcustomers data={data.customer} />                     
 } 
 

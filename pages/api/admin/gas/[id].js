@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { getGasById, getGasData, newGas } from '../../../../backend/controllers/gasController';
+import { getGasById, updateGas } from '../../../../backend/controllers/gasController';
 
 
 
@@ -17,10 +17,9 @@ const router = createRouter({
 
 dbConnect();
 
+router.use(isAuthenticatedUser).put(updateGas);
+router.use(isAuthenticatedUser).get(getGasById);
 
-router.use(isAuthenticatedUser).post(newGas);
-router.use(isAuthenticatedUser).get(getGasData)
-router.use(isAuthenticatedUser).get(getGasById)
 
 
 export default router.handler();
