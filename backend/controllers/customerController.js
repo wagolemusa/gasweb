@@ -42,7 +42,6 @@ export const getCustomerById = async(req, res) =>{
             message: "customers not fund"
         })
     }
-    console.log("nsnnsn", customer)
     return res.status(201).json({
         customer
     })
@@ -53,8 +52,6 @@ export const getCustomerById = async(req, res) =>{
 // update Products
 export const updateCustomer = async(req, res, next) => {
     let customer = await Customer.findById(req.query.id);
-
-    console.log("prrrrr", customer)
 
     if(!customer){
         res.status(404).json({

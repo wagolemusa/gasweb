@@ -2,7 +2,8 @@
 import { genSaltSync } from 'bcryptjs'
 import Gas from '../model/gas'
 import APIFilters from '../utils/APIFilters';
-
+import fs from 'fs'
+import { cloudinary, uploads } from '../utils/cloudinary';
 
 // Save gas 
 export const newGas = async(req, res) => {
@@ -83,8 +84,13 @@ export const deleteGas = async(req, res, next) => {
             error: "No Data found"
         })
     }  
-
-    await genSaltSync.deleteOne();
+    // images associated with Ihe products
+    for(let i = 0; i < gas.images.length; i++){
+        const res = await cloudinary.v2.uploader.destroy(
+            gas.images[i].public_id
+        );
+    }
+    await gas.deleteOne();
     res.status(200).json({
         success: true,
     })

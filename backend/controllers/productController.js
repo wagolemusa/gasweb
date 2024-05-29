@@ -102,9 +102,6 @@ export const uploadProductImages = async(req, res, next) => {
 // update Products
 export const updateProduct = async(req, res, next) => {
     let product = await Product.findById(req.query.id);
-
-    console.log("prrrrr", product)
-
     if(!product){
         res.status(404).json({
             error: "Product not found"

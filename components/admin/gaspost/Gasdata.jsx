@@ -1,14 +1,17 @@
 'use client'
 
 import axios from "axios"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext} from "react"
 import queryString from 'query-string'
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import '../../layouts/styles.css'
+import GasContext from "../../../context/GasContext";
 
 
 const GetGasdata = (searchParams) => {
+
+    const { deleteGas } = useContext(GasContext)
 
     const urlParams = {
         page: searchParams.page,
@@ -32,6 +35,9 @@ const GetGasdata = (searchParams) => {
         fetchData(searchParams)
     }, [])
 
+    const deleteHandler = (id) => {
+        deleteGas(id);
+    }
 
     return (
 
@@ -84,10 +90,11 @@ const GetGasdata = (searchParams) => {
                         <td className="px-6 py-2">
                            
                             <div>
-                                <Link
-                                    href={`/admin/gas/new/${gass?._id}`}
+                            <Link
+                                    href={`/admin/gas/${gass?._id}/upload_images`}
                                     className="px-2 py-2 inline-block text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 cursor-pointer mr-2"
                                 >
+                                  
                                     {/* <i className="fa fa-image" aria-hidden="true"></i> */}
                                     Upload
                                 </Link>

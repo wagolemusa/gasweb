@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { getGasById, updateGas } from '../../../../backend/controllers/gasController';
+import { getGasById, deleteGas, updateGas } from '../../../../backend/controllers/gasController';
 
 
 
@@ -19,6 +19,8 @@ dbConnect();
 
 router.use(isAuthenticatedUser).put(updateGas);
 router.use(isAuthenticatedUser).get(getGasById);
+router.use(isAuthenticatedUser).delete(deleteGas)
+
 
 
 

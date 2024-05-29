@@ -64,6 +64,28 @@ export const GasProvider = ({ children }) => {
   }
 
 
+  // Upload Images
+  const uploadProductImages = async (formData, id) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post(
+        `${process.env.ENVIRONMENT_URL}/api/admin/gas/upload_images/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (data?.data) {
+        setLoading(false);
+        router.replace("/admin/gas");
+      }
+    } catch (error) {
+      setError(error?.response?.data?.message);
+    }
+  };
+
   return (
     <GasContext.Provider
 
@@ -72,6 +94,7 @@ export const GasProvider = ({ children }) => {
         newGasCreate,
         updateGas,
         deleteGas,
+        uploadProductImages,
         error,
         updated,
         setUpdated,

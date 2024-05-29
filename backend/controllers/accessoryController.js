@@ -9,11 +9,7 @@ export const newAccessory = async(req, res) => {
             ...req.body
         })
 
-        console.log("aaaaaa", accessories)
-
         await accessories.save()
-
-
         return res.status(201).json({
             accessories
         });
