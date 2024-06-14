@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import cr1 from '../../public/images/cr1.png';
-import cr3 from '../../public/images/cr3.png';
-import cr4 from '../../public/images/cr4.png';
+import cr1 from '../../../public/images/cr1.png';
+import cr3 from '../../../public/images/cr3.png';
+import cr4 from '../../../public/images/cr4.png';
 
 const ShortProduct = ({ data }) => {
     console.log("Short", data)

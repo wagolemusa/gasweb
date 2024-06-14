@@ -10,13 +10,13 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './styles.css';
 import Image from "next/image";
-import fathil from '../../public/images/fathil.jpg'
-import ijm from '../../public/images/ijm.jpg'
-import iuiu from '../../public/images/iuiu.jpg'
-import pride from '../../public/images/pride.jpg'
-import olympic from '../../public/images/olympic.png'
-import ku from '../../public/images/ku.jpg'
-import npa from '../../public/images/npa.png'
+import fathil from '../../../public/images/fathil.jpg'
+import ijm from '../../../public/images/ijm.jpg'
+import iuiu from '../../../public/images/iuiu.jpg'
+import pride from '../../../public/images/pride.jpg'
+import olympic from '../../../public/images/olympic.png'
+import ku from '../../../public/images/ku.jpg'
+import npa from '../../../public/images/npa.png'
 
 // import required modules
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';

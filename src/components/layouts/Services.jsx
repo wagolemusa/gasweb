@@ -1,7 +1,7 @@
 import React from "react";
-import vbb from '../../public/images/vbb.jpg'
+import vbb from '../../../public/images/vbb.jpg'
 import Image from "next/image";
-import net from '../../public/images/net.jpg'
+import net from '../../../public/images/net.jpg'
 import ShortProduct from '../products/ShortProduct'
 import Card from './Card'
 

@@ -11,7 +11,7 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 import Image from "next/image";
-import g from '../../public/images/g.png'
+import g from '../../../public/images/g.png'
 import clsx from "clsx";
 
 export default function Navbar() {
