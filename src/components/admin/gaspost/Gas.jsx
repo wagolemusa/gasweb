@@ -78,8 +78,6 @@ const NewGas = () => {
         
         </select>
 
-
-
         <div className="grid md:grid-cols-2 gap-x-2 mt-3">
           <div className="mb-4">
             <label className="block mb-1"> Price </label>
@@ -116,8 +114,6 @@ const NewGas = () => {
             </div>
           </div>
           </div>
-
-
         <button
           type="submit"
           className="my-2 px-4 py-2 text-center inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 w-full"
