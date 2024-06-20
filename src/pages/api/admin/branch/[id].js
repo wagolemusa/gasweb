@@ -7,9 +7,8 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newBranch, getBranches} from '../../../../backend/controllers/mainController'; 
 
-
+import { updateBranches, getBranchById } from '../../../../backend/controllers/mainController'; 
 
 const router = createRouter({ 
     onError,
@@ -17,8 +16,7 @@ const router = createRouter({
 
 dbConnect();
 
-
-router.use(isAuthenticatedUser).post(newBranch);
-router.use(isAuthenticatedUser).get(getBranches)
+router.use(isAuthenticatedUser).put(updateBranches);
+router.use(isAuthenticatedUser).get(getBranchById);
 
 export default router.handler();

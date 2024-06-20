@@ -1,8 +1,10 @@
-import Branch from "../../../components/admin/Branch"
+// import Branch from "../../../components/admin/branch/Branch"
+import ListBrach from "../../../components/admin/branch/ListBrach"
 
 
-const BranchPage = () =>{
-    return <Branch />
+
+const GetbranchData = () =>{
+    return <ListBrach/>
 }
 
-export default BranchPage;
+export default GetbranchData;

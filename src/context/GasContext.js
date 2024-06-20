@@ -31,7 +31,6 @@ export const GasProvider = ({ children }) => {
   };
 
 
-
   // update Products
   const updateGas = async (gas, id) => {
     try {

@@ -6,14 +6,12 @@ import { useRouter } from "next/navigation"
 
 const PointContext = createContext();
 
-
 export const PointProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
     const [updated, setUpdated] = useState(false);
   
     const router = useRouter();
-
 
         // creating the branch
         const newPointCreate = async (point) => {
@@ -31,10 +29,6 @@ export const PointProvider = ({ children }) => {
             }
           };
   
-  
-
-
-
     return (
         <PointContext.Provider
 
@@ -48,6 +42,5 @@ export const PointProvider = ({ children }) => {
         </PointContext.Provider>
     )
 }
-
 export default PointContext;
 
