@@ -31,7 +31,9 @@ const Invetory = () => {
 
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-8 py-8">
+        <section 
+        style={{ maxWidth: "700px" }}
+        className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
             <form onSubmit={submitHandler}>
                 <div className="mb-4">
                     <label className="block mb-1">Product Name</label>
@@ -78,7 +80,7 @@ const Invetory = () => {
                     Create Accessory
                 </button>
             </form>
-        </div>
+        </section>
     )
 }
 

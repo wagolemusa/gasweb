@@ -1,10 +1,7 @@
-import Gasbought from "../../../components/admin/Gasbought";
+import ListGasBought from "../../../components/admin/gasbought/ListGasBought"
 
-const GasboughtPage = () => {
-    return <Gasbought />
-
+const GetGas = () => {
+    return <ListGasBought />
 }
 
-export default GasboughtPage;
-
-
+export default GetGas

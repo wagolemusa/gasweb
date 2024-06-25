@@ -2,7 +2,7 @@
 
 import React, { useContext, useState} from "react";
 // import MainContext from '../../context/MainContext'
-import CompanyContext from '../../context/CompanyContext'
+import CompanyContext from '../../../context/CompanyContext'
 
 import { useRouter } from "next/navigation";
 
@@ -25,6 +25,15 @@ const Company = () => {
 
 
     return(
+        <section 
+            style={{ maxWidth: "700px" }}
+            className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+            
+
+            <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+                <a href="/admin/company">Back</a> &nbsp;&nbsp;Create Company
+            </h1>
+
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-8 py-8">
         <form onSubmit={submitHandler}>
             <div className="mb-4">
@@ -49,6 +58,7 @@ const Company = () => {
             </button>
         </form>
     </div>
+    </section>
         
     )
 }

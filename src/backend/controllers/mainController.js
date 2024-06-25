@@ -54,7 +54,20 @@ export const updateBranches = async(req, res, next) => {
 };
 
 
+// Delete branch data
+export const deleteBranch = async(req, res, next) => {
+    let branch = await Branch.findById(req.query.id);
 
+    if(!branch){
+        res.status(404).json({
+            error: "Product not found"
+        })
+    }  
 
+    await branch.deleteOne();
+    res.status(200).json({
+        success: true,
+    })
+};
 
 

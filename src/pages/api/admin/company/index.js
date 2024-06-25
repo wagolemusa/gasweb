@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newCompany } from '../../../../backend/controllers/companyController'
+import { getCompanyData, newCompany } from '../../../../backend/controllers/companyController'
 
 // import { getOrders } from '../../../../backend/controllers/orderController';
 
@@ -20,5 +20,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newCompany);
+router.use(isAuthenticatedUser).get(getCompanyData);
 
 export default router.handler();

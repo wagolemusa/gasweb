@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useContext, useState } from "react";
-import PointContext from "../../context/PointContext";
+import React, { useContext, useState, useEffect, use } from "react";
+import PointContext from "../../../context/PointContext";
+import axios from "axios";
 
 const Point = () => {
   const { newPointCreate } = useContext(PointContext);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null)
 
   const [point, setPoint] = useState({
     customerName: "",
     phone: "",
     cylinderSize: "",
     cylinderType: "",
-    
-
   });
 
   const { 
@@ -30,29 +31,53 @@ const Point = () => {
     e.preventDefault();
     newPointCreate(point);
   };
+
+  // Fetch 
+  useEffect(() => {
+    async function fetchData(){
+        try{
+            const response = await axios.get('http://localhost:3000/api/admin/customer');
+            setData(response.data);
+        } catch(error){
+            setError('Failed to fetch data');
+            console.error('Error fetching data:', error);
+        }
+    }
+    fetchData();
+}, []);
   
 
+console.log("cusr", data)
+
   return (
-    <section className="container max-w-3xl p-6 mx-auto">
-      <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black mb-8">
-        Create New Customer
-      </h1>
+    <section 
+            style={{ maxWidth: "700px" }}
+            className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+            
+
+            <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+                <a href="/admin/points">Back</a> &nbsp;&nbsp;Give Points To Buyers || &nbsp;&nbsp; <a href="/admin/customer/new">Create New Customer</a>
+            </h1>
 
       <form onSubmit={submitHandler}>
-        <div className="mb-4">
-          <label className="block mb-1"> Customer Name </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Customer Name"
-            name="customerName"
-            value={customerName}
-            onChange={onChange}
-            required
-          />
-        </div>
 
-        <div className="mb-4">
+      
+        <label className="" for="inlineFormSelectPref">Customer Name</label>
+
+            <select data-mdb-select-init list="browsers3" class="select
+                border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                name="customerName"
+                value={customerName}
+                onChange={onChange}
+            >
+               <option>Select Customer</option>
+                {data?.products?.map(( pointdata ) => (
+                    <option>{pointdata?.name}</option>
+              ))}
+            </select>
+
+
+        <div className="mb-4 py-3">
           <label className="block mb-1"> Phone </label>
           <input
             type="text"

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import axios from "axios";
+import Link from "next/link";
 
 
 
@@ -76,13 +77,15 @@ const Gasbought = () => {
     return (
         <>
             <div className='profileside'>
-                <div class="container">
+                <div class="container py-3">
+                <Link  href="/admin/gasbought" className="btn btn-primary">Back</Link> 
+
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-4 py-4">
                             <div className="userform">
                                 <h1>Gas Bought</h1>
                                 <form onSubmit={handleSubmit}>
-                                    <select className="form-select" aria-label="Default select example"
+                                <select className="form-select" aria-label="Default select example"
                                         onChange={(e) => setBrand(e.target.value)}
                                     >
                                         <option>Select</option>
@@ -126,7 +129,7 @@ const Gasbought = () => {
                         </div>
 
                         {/* Saving Orders */}
-                        <div className="col-md-6">
+                        <div className="col-md-6 py-4">
                             <div className="userform">
 
                                 {!error && <div className='suc'>{success ? success : ""}</div>}
@@ -144,7 +147,7 @@ const Gasbought = () => {
                                     onChange={(e) => setDate(e.target.value)}
                                 />
                                 <br/>
-                                    <input type="text" className="form-control" placeholder=""
+                                    <input type="text" className="form-control" placeholder="Distributor Name"
                                     onChange={(e) => setDistributor(e.target.value)}
                                 />
 

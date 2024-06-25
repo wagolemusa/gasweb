@@ -31,7 +31,22 @@ export const CompanyProvider = ({ children }) => {
             }
           };
   
-  
+
+        // Delete company 
+        const deleteCompany = async (id) => {
+          try {
+            const { data } = await axios.delete(
+              `${process.env.ENVIRONMENT_URL}/api/admin/company/${id}`
+            );
+            if (data?.success) {
+              router.replace(`/admin/company`)
+            }
+      
+          } catch (error) {
+            setError(error?.response?.data.message);
+          }
+        }
+      
 
 
 
@@ -40,7 +55,8 @@ export const CompanyProvider = ({ children }) => {
 
         value={{
           
-            newCompanyCreate
+            newCompanyCreate,
+            deleteCompany
         }}
 
         >

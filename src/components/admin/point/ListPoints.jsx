@@ -1,0 +1,94 @@
+'use client'
+
+import React, { useContext, useEffect, useState} from "react";
+import Link from "next/link";
+import CustromPagination from "../../layouts/CustromPagination";
+import '../../layouts/styles.css'
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
+const ListPoint = ({ id }) => {
+
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const router = useRouter();
+
+    
+    useEffect(() => {
+        async function fetchData(){
+            try{
+                const response = await axios.get('http://localhost:3000/api/admin/points');
+                setData(response.data);
+            } catch(error){
+                setError('Failed to fetch data');
+                console.error('Error fetching data:', error);
+            }
+        }
+        fetchData();
+    }, []);
+
+
+
+  
+    return (
+        <div className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
+                <h1 className="text-3xl my-5 ml-4 font-bold">
+                 <Link href="/admin/points/new" className="btn btn-primary">Give Points</Link>
+
+                </h1>
+            <table className="table w-full text-sm text-left">
+                <thead className="text-l text-gray-700 uppercase">
+                    <tr>
+                        <th scope="col" className="px-6 py-3">
+                            Customer Name
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Phone Number
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Cylinder Size
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Cylinder Type
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Points
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+             
+                    {data?.point?.map(( pointdata ) => (
+                        
+                        <tr className="bg-white">
+                        <td className="px-6 py-2">{pointdata?.customerName}</td>
+                        <td className="px-6 py-2">{pointdata?.phone}</td>
+                        <td className="px-6 py-2">{pointdata?.cylinderSize}</td>
+                        <td className="px-6 py-2">{pointdata?.cylinderType}</td>
+                        <td className="px-6 py-2">{pointdata?.points}</td>
+            
+                    </tr>
+                    ))}
+         
+                </tbody>
+            </table>
+
+
+                    
+
+            <div className="mb-6">
+                <CustromPagination
+                    resPerPage={data?.resPerPage}
+                    productsCount={data?.filteredProductsCount}
+                />
+            </div>
+        </div>
+
+    );
+};
+
+export default ListPoint;
+
+
+

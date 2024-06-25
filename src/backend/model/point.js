@@ -20,7 +20,7 @@ const pointsSchema = mongoose.Schema({
     },
     points: {
         type: Number, 
-        required: false
+        default: "2000"
      },
     user: {
         type: mongoose.Schema.Types.ObjectId,

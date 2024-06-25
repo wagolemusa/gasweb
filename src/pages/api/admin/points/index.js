@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newPoint } from '../../../../backend/controllers/pointsController';
+import { newPoint, getPointData } from '../../../../backend/controllers/pointsController';
 
 
 const router = createRouter({ 
@@ -18,5 +18,7 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newPoint);
+router.use(isAuthenticatedUser).get(getPointData)
+
 
 export default router.handler();
