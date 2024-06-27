@@ -47,8 +47,6 @@ const Point = () => {
 }, []);
   
 
-console.log("cusr", data)
-
   return (
     <section 
             style={{ maxWidth: "700px" }}

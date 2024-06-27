@@ -1,10 +1,29 @@
 "use client";
 
-import React, { useContext, useState } from "react";
-import SellContext from "../../context/SellContext";
+import React, { useContext, useState, useEffect } from "react";
+import SellContext from "../../../context/SellContext";
+import axios from "axios";
 
 const NewSell = () => {
   const { newSellCreate } = useContext(SellContext);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null)
+
+
+// Fetch branches
+useEffect(() => {
+  async function fetchData(){
+      try{
+          const response = await axios.get('http://localhost:3000/api/admin/branch');
+          setData(response.data);
+      } catch(error){
+          setError('Failed to fetch data');
+          console.error('Error fetching data:', error);
+      }
+  }
+  fetchData();
+}, []);
+
 
 
 
@@ -13,6 +32,7 @@ const NewSell = () => {
     cylinderSize: "",
     cylinderType: "",
     amount: "",
+    datedata: "",
     time: "",
     customerName: "",
     phone: "",
@@ -25,6 +45,7 @@ const NewSell = () => {
     cylinderSize,
     amount,
     time,
+    datedata,
     customerName, 
     phone,} = sell;
 
@@ -40,26 +61,30 @@ const NewSell = () => {
   
 
   return (
-    <section className="container max-w-3xl p-6 mx-auto">
-      <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black mb-8">
-        Create Sales
-      </h1>
+    <section 
+    style={{ maxWidth: "700px" }}
+    className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+      <h3 className="mb-3 text-xl md:text-3xl font-semibold text-black">
+      <a href="/admin/sell">Back</a> &nbsp;&nbsp;Create Sales || &nbsp;&nbsp;<a href="/admin/branch/new">Create Branch</a> 
+      </h3>
 
       <form onSubmit={submitHandler}>
-        <div className="mb-4">
-          <label className="block mb-1"> Branch </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Product name"
-            name="branch"
-            value={branch}
-            onChange={onChange}
-            required
-          />
-        </div>
 
-        <div className="mb-4">
+              
+      <label className="" for="inlineFormSelectPref">Shop branch Name</label>
+          <select data-mdb-select-init list="browsers3" class="select
+              border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+              name="branch"
+              value={branch}
+              onChange={onChange}
+          >
+            <option>Select branch</option>
+              {data?.branch?.map(( pointdata ) => (
+              <option>{pointdata?.branchName}</option>
+            ))}
+          </select>
+
+        <div className="mb-4 py-3">
           <label className="block mb-1"> Cylinder Size </label>
           <input
             type="text"
@@ -98,6 +123,18 @@ const NewSell = () => {
           />
         </div>
 
+        <div className="mb-4">
+          <label className="block mb-1">Date</label>
+          <input
+            type="date"
+            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+            placeholder="Date"
+            name="datedata"
+            value={datedata}
+            onChange={onChange}
+            required
+          />
+        </div>
 
         <div className="mb-4">
           <label className="block mb-1"> Time</label>

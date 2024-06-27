@@ -1,9 +1,9 @@
-import NewSell from "../../../components/admin/Sell"
+import ListSales from "../../../components/admin/sell/ListSales"
 
 
 const NewSellPage = () => {
 
-    return <NewSell/>
+    return <ListSales/>
 }
 
 export default NewSellPage

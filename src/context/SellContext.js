@@ -30,7 +30,22 @@ export const SellProvider = ({ children }) => {
           }
         };
 
+    // update Products
+    const updateSales = async (sell, id) => {
+      try {
+        const { data } = await axios.put(
+          `${process.env.ENVIRONMENT_URL}/api/admin/sell/${id}`,
+          sell
+        );
 
+        if (data) {
+          setUpdated(true);
+          router.replace(`/admin/sell`);
+        }
+      } catch (error) {
+        setError(error?.response?.data?.message);
+      }
+    };
 
 
     return (
@@ -39,6 +54,7 @@ export const SellProvider = ({ children }) => {
         value={{
           
             newSellCreate,
+            updateSales
         }}
 
         >

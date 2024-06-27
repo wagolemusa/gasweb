@@ -6,7 +6,7 @@ import {
   
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
-import { newSell } from '../../../../backend/controllers/sellController';
+import { getSell, newSell } from '../../../../backend/controllers/sellController';
 
 
 const router = createRouter({ 
@@ -17,5 +17,7 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newSell);
+router.use(isAuthenticatedUser).get(getSell)
+
 
 export default router.handler();

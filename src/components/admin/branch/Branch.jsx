@@ -28,6 +28,14 @@ const Branch = () => {
 
 
     return (
+        <section 
+        style={{ maxWidth: "700px" }}
+        className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+            
+     <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+        <a href="/admin/branch">Back</a> &nbsp;&nbsp; 
+      </h1>
+
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-8 py-8">
             <form onSubmit={submitHandler}>
                 <div className="mb-4">
@@ -76,6 +84,7 @@ const Branch = () => {
                 </button>
             </form>
         </div>
+        </section>
     )
 }
 
