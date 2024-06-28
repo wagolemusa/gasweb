@@ -56,3 +56,12 @@ export const checkCode = async(req, res) => {
 
 
 
+
+// query Code promo Code
+export const getPromoCode = async(req, res) =>{
+    const promo = await Promocode.find();
+    return res.status(201).json({
+        promo
+    })
+
+}

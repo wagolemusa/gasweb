@@ -1,10 +1,10 @@
-import Promocode from "../../../components/admin/Promocode";
+import Getpromo from "../../../components/admin/promo/Getpromo"
 
 
-const NewPromo = () => {
+const GetPromo = () => {
 
-    return <Promocode />
+    return <Getpromo />
 }
 
-export default NewPromo;
+export default GetPromo;
 

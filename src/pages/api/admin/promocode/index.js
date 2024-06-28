@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newPromocode } from '../../../../backend/controllers/promoController';
+import { getPromoCode, newPromocode } from '../../../../backend/controllers/promoController';
 
 
 const router = createRouter({ 
@@ -18,5 +18,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newPromocode);
+router.use(isAuthenticatedUser).get(getPromoCode);
 
 export default router.handler();

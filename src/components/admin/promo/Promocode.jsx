@@ -18,19 +18,14 @@ const Promocode = () => {
         const createProm = {
             amount
         }
-
-        console.log("accesory", createProm)
         try {
             const response = await axios.post("http://localhost:3000/api/admin/promocode", createProm, {
                
-           
             headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             });
-
-            
 
             if (response.status === 201) {
                 window.location.replace("/admin/promocode");
@@ -50,6 +45,10 @@ const Promocode = () => {
         <section 
         style={{ maxWidth: "700px" }}
         className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+
+<h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+        <a href="/admin/promocode">Back</a> &nbsp;&nbsp;
+      </h1>
         
             <form onSubmit={handleSave}>
                 <div className="mb-4">
