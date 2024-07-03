@@ -6,8 +6,6 @@ export const newInventoryAccessory = async (req, res) => {
 
         let initQnt = await Invetoryaccessory.findOne({ nameaccessory: nameaccessory }).select("stock_quantity").sort({ _id: -1});
 
- 
-
         let initial_quantity = 0;
         if (initQnt) {
             initial_quantity = initQnt.stock_quantity;
@@ -31,7 +29,6 @@ export const newInventoryAccessory = async (req, res) => {
 
 
         await shopStock.save();
-
         return res.status(201).json({
             success: true,
             message: "Stock Was created"
@@ -44,3 +41,24 @@ export const newInventoryAccessory = async (req, res) => {
         });
     }
 };
+
+
+// Query Inventory data Out of stock
+export const getInventoryOutOfStock = async(req, res) => {
+    const inventory = await Invetoryaccessory.find({stock: "Outstock"});
+    return res.status(200).json({
+        inventory
+    })
+
+}
+
+// Query Inventory data 
+export const getInventoryInStock = async(req, res) => {
+    const inventory = await Invetoryaccessory.find({stock: "Instock"});
+    return res.status(200).json({
+        inventory
+    })
+
+}
+
+

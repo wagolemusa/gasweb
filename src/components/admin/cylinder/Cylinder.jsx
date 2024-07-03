@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 
+const CylinderStock = () => {
+    const [data, setData] = useState(null);
 
-const Cylinder = () => {
-    const [branchName, setBranchName] = useState("");
+    const [branchname, setBranchName] = useState("");
     const [cyliders, setCyliders] = useState("");
     const [numberkgs, setNumberkgs] = useState("");
     const [brand, setBrand] = useState("");
@@ -38,7 +38,7 @@ const Cylinder = () => {
         setError(null);
 
         const BookData = {
-            branchName,
+            branchname,
             cylinders: itemList.map(item => ({
                 ...item,
                 brand: item.brand,
@@ -58,7 +58,7 @@ const Cylinder = () => {
             });
 
             if (response.status === 201) {
-                window.location.replace("/admin/gasbought");
+                window.location.replace("/admin/cylinder");
             }
 
             setSuccess(response.data.message);
@@ -70,6 +70,20 @@ const Cylinder = () => {
             }
         }
     }
+
+
+    useEffect(() => {
+        async function fetchData(){
+            try{
+                const response = await axios.get('http://localhost:3000/api/admin/branch');
+                setData(response.data);
+            } catch(error){
+                setError('Failed to fetch data');
+                console.error('Error fetching data:', error);
+            }
+        }
+        fetchData();
+    }, []);
 
 
     return (
@@ -139,9 +153,21 @@ const Cylinder = () => {
                                 )) : <p>{error} </p>
                                 }
                                 <form onSubmit={handleSave}>
-                                <input type="text" className="form-control" placeholder="Branch Name"
-                                    onChange={(e) => setBranchName(e.target.value)}
-                                />
+
+                                <label className="" for="inlineFormSelectPref">Branch Name</label>
+                                    <select data-mdb-select-init list="browsers3" class="select
+                                        border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                                        name="nameaccesory"
+                                        value={branchname}
+                                        onChange={(e) => setBranchName(e.target.value)}
+                                        required
+                                    >
+                                        <option>Select branch</option>
+                                        {data?.branch?.map(( branchdata ) => (
+                                        <option>{branchdata?.branchName}</option>
+                                        ))}
+                                    </select> 
+
                                 <br/>
 
                                 {
@@ -178,6 +204,6 @@ const Cylinder = () => {
         </>
     )
 }
-export default Cylinder;
+export default CylinderStock;
 
 

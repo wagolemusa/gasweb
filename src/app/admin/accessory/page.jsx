@@ -1,9 +1,10 @@
-import Accessory from "../../../components/admin/Accessory";
+import ListAccesories from "../../../components/admin/accessory/Listaccessory";
 
 
-const AccessoryPage = () => {
-    return <Accessory />
+const ListAccessoryPage = () => {
+    
+    return <ListAccesories />
 }
 
-export default AccessoryPage;
+export default ListAccessoryPage;
 

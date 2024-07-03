@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { getSockedCylinder, newStockCylinder } from '../../../../backend/controllers/stockCylinder';
+import { deleteSockedCylinder } from '../../../../backend/controllers/stockCylinder';
 
 
 
@@ -18,7 +18,6 @@ const router = createRouter({
 dbConnect();
 
 
-router.use(isAuthenticatedUser).post(newStockCylinder);
-router.use(isAuthenticatedUser).get(getSockedCylinder);
+router.use(isAuthenticatedUser).delete(deleteSockedCylinder)
 
 export default router.handler();

@@ -6,12 +6,7 @@ export const newStockCylinder = async(req, res, next) => {
         let gas  = new CylinderStock({
             ...req.body
         })
-
-        console.log("gass", gas)
-
         await gas.save()
-
-
         return res.status(201).json({
             gas
         });
@@ -19,3 +14,33 @@ export const newStockCylinder = async(req, res, next) => {
         console.log(error)
     }    
 };
+
+
+// Query Gas bought
+export const getSockedCylinder = async(req, res) => {
+    const cylinder = await CylinderStock.find();
+    if(!cylinder){
+        return res.status(400).json({
+            message: "There is No Gas Records"
+        })
+    }
+    return res.status(201).json({
+        cylinder
+    })
+}
+
+
+// Delete Company data
+export const deleteSockedCylinder = async(req, res, next) => {
+    let cylinder = await CylinderStock.findById(req.query.id);
+    if(!cylinder){
+        res.status(404).json({
+            error: "Product not found"
+        })
+    }  
+    await cylinder.deleteOne();
+    res.status(200).json({
+        success: true,
+    })
+};
+

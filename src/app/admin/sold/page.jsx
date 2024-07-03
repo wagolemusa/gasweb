@@ -1,10 +1,10 @@
-import NewSold from "../../../components/admin/Sold";
+import ListSold from "../../../components/admin/sold/ListSold";
 
-const NewSoldPage = () => {
-    return <NewSold />
+const ListSoldpage = () => {
+    return <ListSold />
 
 }
-export default NewSoldPage
+export default ListSoldpage
 
 
 

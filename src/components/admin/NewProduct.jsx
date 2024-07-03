@@ -29,9 +29,10 @@ const NewProduct = () => {
     <section 
     style={{ maxWidth: "700px" }}
     className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
-      <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black">
-        Create New Product
+       <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+        <a href="/admin/products">Back</a> &nbsp;&nbsp;Post Accessories on the web
       </h1>
+
 
       <form onSubmit={submitHandler}>
         <div className="mb-4">

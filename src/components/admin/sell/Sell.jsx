@@ -7,11 +7,13 @@ import axios from "axios";
 const NewSell = () => {
   const { newSellCreate } = useContext(SellContext);
   const [data, setData] = useState(null);
+  const [customerdata, setCustomerData] = useState(null);
   const [error, setError] = useState(null)
 
 
 // Fetch branches
 useEffect(() => {
+
   async function fetchData(){
       try{
           const response = await axios.get('http://localhost:3000/api/admin/branch');
@@ -21,9 +23,19 @@ useEffect(() => {
           console.error('Error fetching data:', error);
       }
   }
+
+  async function fetchcustomer(){
+    try{
+        const response = await axios.get('http://localhost:3000/api/admin/customer');
+        setCustomerData(response.data);
+    } catch(error){
+        setError('Failed to fetch data');
+        console.error('Error fetching data:', error);
+    }
+}
+  fetchcustomer()
   fetchData();
 }, []);
-
 
 
 
@@ -31,6 +43,7 @@ useEffect(() => {
     branch: "",
     cylinderSize: "",
     cylinderType: "",
+    category: "",
     amount: "",
     datedata: "",
     time: "",
@@ -43,6 +56,7 @@ useEffect(() => {
     branch,
     cylinderType,
     cylinderSize,
+    category,
     amount,
     time,
     datedata,
@@ -84,33 +98,58 @@ useEffect(() => {
             ))}
           </select>
 
+            <br/> <br/>
+
+            <select class="form-select" aria-label="Default select example" 
+                name="cylinderSize"
+                value={cylinderSize}
+                onChange={onChange}
+            >
+                <option selected>Cylinder Size</option>
+                <option value="3kgs">3kgs</option>
+                <option value="6kgs">6kgs</option>
+                <option value="12kgs">12kgs</option>
+                <option value="12.5kgs">12.5kgs</option>
+                <option value="13kgs">13kgs</option>
+                <option value="15kgs">15kgs</option>
+                <option value="25kgs">25kgs</option>
+                <option value="45kgs">45kgs</option>
+            </select>
+            <br/> 
+        <select className="form-select" aria-label="Default select example"
+              name="cylinderType"
+              value={cylinderType}
+              onChange={onChange}
+         >
+            <option>Cylinder Type</option>
+            <option>Korgas</option>
+            <option>Mengas</option>
+             <option>Total</option>
+            <option>Oryx</option>
+            <option>Shell</option>
+             <option>Oilibya</option>
+              <option>K-gas</option>
+              <option>Hashi</option>
+              <option>Stabex</option>
+              <option>Easy</option>
+              <option>Lake</option>
+              <option>Mongas</option>
+              <option>Petgas</option>
+              <option>Others</option>
+          </select><br />
+
+
+      <select class="form-select" aria-label="Default select example"
+            name="category"
+            value={category}
+            onChange={onChange}
+        >
+            <option selected>Select Category</option>
+            <option>Refill</option>
+            <option>Full Set</option>
+        </select>
+
         <div className="mb-4 py-3">
-          <label className="block mb-1"> Cylinder Size </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Cylinder Size"
-            name="cylinderSize"
-            value={cylinderSize}
-            onChange={onChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block mb-1"> Cylinder Type </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Cylinder Type"
-            name="cylinderType"
-            value={cylinderType}
-            onChange={onChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
           <label className="block mb-1"> Amount </label>
           <input
             type="number"
@@ -149,20 +188,21 @@ useEffect(() => {
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-1"> Customer Name </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Customer Name"
-            name="customerName"
-            value={customerName}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1"> Phone </label>
+        <label className="" for="inlineFormSelectPref">Customers</label>
+          <select data-mdb-select-init list="browsers3" class="select
+              border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+              name="customerName"
+              value={customerName}
+              onChange={onChange}
+          >
+            <option>Select Customer</option>
+              {customerdata?.products?.map(( custdata ) => (
+              <option>{custdata?.name}</option>
+            ))}
+          </select>
+
+        <div className="mb-4 py-2">
+          <label className="block mb-1"> Phone</label>
           <input
             type="text"
             className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"

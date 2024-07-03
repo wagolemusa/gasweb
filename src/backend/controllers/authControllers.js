@@ -45,8 +45,8 @@ export const updateProfile = async (req, res) => {
 export const updatePassword = async (req, res, next) => {
   const user = await User.findById(req.user._id).select("+password");
 
-  console.log("current", req.body.currentPassword)
-  console.log("New", req.body.newPassword)
+  // console.log("current", req.body.currentPassword)
+  // console.log("New", req.body.newPassword)
   
   const isPasswordMatched = await bcrypt.compare(
     req.body.currentPassword,

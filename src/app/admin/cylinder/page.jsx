@@ -1,9 +1,9 @@
-import Cylinder from "../../../components/admin/Cylinder";
+import ListCylinder from "../../../components/admin/cylinder/ListCylinder";
 
 
-const CylinderPage = () => {
-    return <Cylinder />
+const CylinderPageView = () => {
+    return <ListCylinder />
 }
 
-export default CylinderPage;
+export default CylinderPageView;
 

@@ -8,6 +8,8 @@ export const newSell = async(req, res) => {
     })
 }
 
+
+
 // Query Sales Data
 export const getSell = async(req, res)=>{
     const sell = await Sell.find();

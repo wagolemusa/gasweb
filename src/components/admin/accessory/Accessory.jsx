@@ -22,16 +22,11 @@ const Accessory = () => {
         console.log("accesory", createAccessory)
         try {
             const response = await axios.post("http://localhost:3000/api/admin/accessory", createAccessory, {
-               
-           
             headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             });
-
-            
-
             if (response.status === 201) {
                 window.location.replace("/admin/accessory");
             }
@@ -46,6 +41,9 @@ const Accessory = () => {
         }
     }
 
+
+
+    
     return (
         <section 
         style={{ maxWidth: "700px" }}
