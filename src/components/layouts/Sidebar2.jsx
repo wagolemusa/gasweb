@@ -67,9 +67,21 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
     </a>
 </li>
 <li className='sidebar-list-item'>
+<BsMenuButtonWideFill className='icon'/>
+    <a href="/admin/installment">
+       Installments
+    </a>
+</li>
+<li className='sidebar-list-item'>
 <BsFillGearFill className='icon'/>
     <a href="/admin/points">
        Points
+    </a>
+</li>
+<li className='sidebar-list-item'>
+<BsFillGearFill className='icon'/>
+    <a href="/admin/referral">
+       Referral Points
     </a>
 </li>
 <li className='sidebar-list-item'>

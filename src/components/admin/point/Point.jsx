@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState, useEffect, use } from "react";
+import React, { useContext, useState, useEffect} from "react";
 import PointContext from "../../../context/PointContext";
 import axios from "axios";
 
@@ -18,7 +18,6 @@ const Point = () => {
 
   const { 
     customerName,
-    phone,
     cylinderSize,
     cylinderType} = point;
 
@@ -73,20 +72,6 @@ const Point = () => {
                     <option>{pointdata?.name}</option>
               ))}
             </select>
-
-
-        <div className="mb-4 py-3">
-          <label className="block mb-1"> Phone </label>
-          <input
-            type="text"
-            className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-            placeholder="Phone Number"
-            name="phone"
-            value={phone}
-            onChange={onChange}
-            required
-          />
-        </div>
 
         <div className="mb-4">
           <label className="block mb-1"> Cylinder Type </label>

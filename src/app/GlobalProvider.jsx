@@ -10,6 +10,8 @@ import {CustomerProvider} from "../context/CustomerContext";
 import { PointProvider } from "../context/PointContext";
 import { SellProvider } from "../context/SellContext";
 import { GasProvider} from "../context/GasContext"
+import { ReferralProvider } from "../context/RefarralContext";
+import  { InstallmentProvider } from "../context/InstallmentContext"
 
 
 import { ToastContainer } from "react-toastify";
@@ -33,7 +35,11 @@ export function GlobalProvider({ children }) {
                                             <SellProvider>
                                                 <InvetoryProvider>
                                                     <GasProvider>
-                                                    <SessionProvider>{children}</SessionProvider>
+                                                        <ReferralProvider>
+                                                            <InstallmentProvider>
+                                                            <SessionProvider>{children}</SessionProvider>
+                                                            </InstallmentProvider>
+                                                        </ReferralProvider>
                                                 </GasProvider>
                                                 </InvetoryProvider>
                                             </SellProvider>
