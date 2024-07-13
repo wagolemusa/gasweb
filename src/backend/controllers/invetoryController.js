@@ -27,7 +27,6 @@ export const newInventoryAccessory = async (req, res) => {
             { sort: { _id: -1 },  } // Sort by _id in descending order and return the updated document
         );
 
-
         await shopStock.save();
         return res.status(201).json({
             success: true,

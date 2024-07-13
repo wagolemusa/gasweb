@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const installmentSchema = mongoose.Schema({
+const statementSchema = mongoose.Schema({
     customerName: {
         type: String,
         required: false
@@ -45,4 +45,6 @@ const installmentSchema = mongoose.Schema({
         default: Date.now,
     }
 })
-export default mongoose.models.Installment || mongoose.model("Installment", installmentSchema)
+export default mongoose.models.Statement || mongoose.model("Statement", statementSchema)
+
+

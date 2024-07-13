@@ -6,7 +6,7 @@ import axios from "axios";
 const Installment = () => {
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
-    const { newInstallmentCreate } = useContext(InstallmentContext);
+    const { newSecandPaidCreate , newInstallmentCreate} = useContext(InstallmentContext);
 
 
 
@@ -28,11 +28,11 @@ const Installment = () => {
     const [instllment, setInstllment] = useState({
         customerName: "",
         phone: "",
-        amount: "",
         cylinderSize: "",
         cylinderType: "",
+        category: "",
+        amount: "",
         installmentPaid: "",
-
 
     });
 
@@ -41,6 +41,7 @@ const Installment = () => {
         phone,
         cylinderSize,
         cylinderType,
+        category,
         amount,
         installmentPaid,
     } = instllment;
@@ -64,7 +65,7 @@ const Installment = () => {
             className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
 
             <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
-                <a href="/admin/customer">Back</a> &nbsp;&nbsp;Save Custamer's Installment
+                <a href="/admin/installment">Back</a> &nbsp;&nbsp;Save Custamer's Installment
             </h1>
 
             <form onSubmit={submitHandler}>
@@ -134,6 +135,18 @@ const Installment = () => {
                     <option value="45kgs">45kgs</option>
                 </select>
                 <br />
+
+                <select class="form-select" aria-label="Default select example"
+                    name="category"
+                    value={category}
+                    onChange={onChange}
+                >
+                    <option selected>Category</option>
+                    <option value="refill">refill</option>
+                    <option value="fullset">fullset</option>
+                </select>
+                <br />
+
                 <div className="mb-4">
                     <label className="block mb-1"> Amount </label>
                     <input

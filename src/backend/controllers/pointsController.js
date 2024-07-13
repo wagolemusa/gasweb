@@ -1,4 +1,5 @@
 import Point from "../model/point";
+import Withdrowpoint from "../model/withdrowpoint";
 
 // create points
 export const newPoint = async(req, res) => {
@@ -73,4 +74,52 @@ export const deletePoint = async(req, res, next) => {
     res.status(200).json({
         success: true,
     })
+};
+
+
+// update installment if Complate payment or not
+export const updatepoints = async (req, res, next) => {
+    try {
+        let point = await Point.findById(req.query.id);
+
+        if (!point) {
+            return res.status(404).json({
+                error: "Data not found"
+            });
+        }
+
+        const { customerName, phone, cylinderType, cylinderSize } = req.body;
+
+        // Find the initial amount of points
+        let initialPoints = point.points; // Assuming points is a property of the found Point document
+
+        // Update the point document
+        point = await Point.findByIdAndUpdate(req.query.id, req.body, { new: true });
+
+        // Find the updated points
+        let updatedPoints = point.points;
+
+        // Calculate the difference in points
+        let pointsDifference = parseFloat(initialPoints) - parseFloat(updatedPoints);
+        // Save statement
+        let statement = new Withdrowpoint({
+            customerName,
+            phone,
+            cylinderType,
+            cylinderSize,
+            points: pointsDifference // Assuming pointsDifference is relevant to the statement
+        });
+
+        console.log("Statement:", statement);
+        await statement.save();
+
+        res.status(200).json({
+            statement,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            error: "Server Error",
+        });
+    }
 };

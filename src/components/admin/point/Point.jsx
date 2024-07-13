@@ -18,6 +18,7 @@ const Point = () => {
 
   const { 
     customerName,
+    phone,
     cylinderSize,
     cylinderType} = point;
 
@@ -70,6 +71,20 @@ const Point = () => {
                <option>Select Customer</option>
                 {data?.products?.map(( pointdata ) => (
                     <option>{pointdata?.name}</option>
+              ))}
+            </select>
+
+            <label className="" for="inlineFormSelectPref">Phone Name</label>
+
+            <select data-mdb-select-init list="browsers3" class="select
+                border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                name="phone"
+                value={phone}
+                onChange={onChange}
+            >
+              <option>Phone Number</option>
+                {data?.products?.map(( pointdata ) => (
+                    <option>{pointdata?.phone}</option>
               ))}
             </select>
 

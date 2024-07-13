@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const pointsSchema = mongoose.Schema({
+const withdrowpointSchema = mongoose.Schema({
     customerName: {
         type: String,
         required: false
@@ -18,7 +18,7 @@ const pointsSchema = mongoose.Schema({
     },
     points: {
         type: Number, 
-        default: "0"
+        default: "2000"
      },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -30,7 +30,7 @@ const pointsSchema = mongoose.Schema({
         default: Date.now,
     }
 })
-export default mongoose.models.Point || mongoose.model("Point", pointsSchema)
+export default mongoose.models.Withdrowpoint || mongoose.model("Withdrowpoint", withdrowpointSchema)
 
 
 

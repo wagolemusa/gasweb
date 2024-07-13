@@ -28,13 +28,34 @@ export const PointProvider = ({ children }) => {
               setError(error?.response?.data?.message);
             }
           };
+
+
+              // update Installment Status
+    const updatePointsData = async (point, id) => {
+      try {
+        const { data } = await axios.put(
+          `${process.env.ENVIRONMENT_URL}/api/admin/points/${id}`,
+          point
+        );
+
+        if (data) {
+          setUpdated(true);
+          router.replace(`/admin/points`);
+        }
+      } catch (error) {
+        setError(error?.response?.data?.message);
+      }
+    };
+
+    
   
     return (
         <PointContext.Provider
 
         value={{
           
-            newPointCreate
+            newPointCreate,
+            updatePointsData
         }}
 
         >
