@@ -7,9 +7,8 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newBranch } from '../../../../backend/controllers/mainController'; 
+import { newBranch, getBranches} from '../../../../backend/controllers/mainController'; 
 
-// import { getOrders } from '../../../../backend/controllers/orderController';
 
 
 const router = createRouter({ 
@@ -20,5 +19,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newBranch);
+router.use(isAuthenticatedUser).get(getBranches)
 
 export default router.handler();

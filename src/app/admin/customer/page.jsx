@@ -11,7 +11,6 @@ const getCustomers = async (searchParams ) => {
     };
 
     const searchQuery = queryString.stringify(urlParams)
-    console.log("searchcccc", searchQuery)
 
     const { data } = await axios.get(`${process.env.ENVIRONMENT_URL}/api/admin/customer?${searchQuery}`);
     return data;

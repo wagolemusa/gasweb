@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newGassBought } from '../../../../backend/controllers/gasBoughtController';
+import { getGasBought, newGassBought } from '../../../../backend/controllers/gasBoughtController';
 
 
 
@@ -19,5 +19,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newGassBought);
+router.use(isAuthenticatedUser).get(getGasBought)
 
 export default router.handler();

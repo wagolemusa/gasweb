@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newStockCylinder } from '../../../../backend/controllers/stockCylinder';
+import { getSockedCylinder, newStockCylinder } from '../../../../backend/controllers/stockCylinder';
 
 
 
@@ -19,5 +19,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newStockCylinder);
+router.use(isAuthenticatedUser).get(getSockedCylinder);
 
 export default router.handler();

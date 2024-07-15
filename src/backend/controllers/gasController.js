@@ -8,10 +8,8 @@ import { cloudinary, uploads } from '../utils/cloudinary';
 // Save gas 
 export const newGas = async(req, res) => {
     try{
-
         let gassave = new Gas ({
             ...req.body
-
         })
         await gassave.save()
 
@@ -24,9 +22,7 @@ export const newGas = async(req, res) => {
 
 // Get All Customers
 export  const getGasData = async(req, res, next) =>{
-
-    const resPerPage = 1
-
+    const resPerPage = 10
     const apiFilters = new APIFilters(Gas.find(), req.query)
     .search()
     .filter()
@@ -57,6 +53,30 @@ export const getGasById = async(req, res) =>{
 }
 
 
+// query all 6kgs where set on top
+export const query6kgs = async(req, res) =>{
+    const get6kgs = await Gas.find({ cylinderSize: "6kgs"}) // and seton: "top"
+    return res.status(201).json({
+        get6kgs
+    })
+}
+
+
+// query all 12kgs where set 12kgs
+export const query12kgs = async(req, res) =>{
+    const get12kgs = await Gas.find({ size: "big" })
+    return res.status(201).json({
+        get12kgs
+    })
+}
+
+// query all where promoation is on
+export const queryPromo = async(req, res) =>{
+    const getPro = await Gas.find({ promotion: "on" })
+    return res.status(201).json({
+        getPro
+    })
+}
 
 // update Products
 export const updateGas = async(req, res, next) => {

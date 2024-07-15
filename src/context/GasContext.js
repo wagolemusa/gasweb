@@ -30,6 +30,7 @@ export const GasProvider = ({ children }) => {
     }
   };
 
+
   // update Products
   const updateGas = async (gas, id) => {
     try {
@@ -40,7 +41,7 @@ export const GasProvider = ({ children }) => {
 
       if (data) {
         setUpdated(true);
-        router.replace(`/admin/gas`);
+        router.replace("/admin/gas");
       }
     } catch (error) {
       setError(error?.response?.data?.message);

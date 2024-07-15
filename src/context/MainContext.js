@@ -30,7 +30,40 @@ export const MainProvider = ({ children }) => {
           }
         };
 
+
+
         
+    // update Products
+    const updateBranchdata = async (branch, id) => {
+      try {
+        const { data } = await axios.put(
+          `${process.env.ENVIRONMENT_URL}/api/admin/branch/${id}`,
+          branch
+        );
+
+        if (data) {
+          setUpdated(true);
+          router.replace(`/admin/branch`);
+        }
+      } catch (error) {
+        setError(error?.response?.data?.message);
+      }
+    };
+
+      // Delete
+  const deleteBranch = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `${process.env.ENVIRONMENT_URL}/api/admin/branch/${id}`
+      );
+      if (data?.success) {
+        router.replace(`/admin/branch`)
+      }
+
+    } catch (error) {
+      setError(error?.response?.data.message);
+    }
+  }
 
 
 
@@ -38,8 +71,14 @@ export const MainProvider = ({ children }) => {
         <MainContext.Provider
 
         value={{
-          
+            error,
+            loading,
+            updated,
+            setLoading,
+            setUpdated,
             newBranchCreate,
+            deleteBranch,
+            updateBranchdata
         }}
 
         >

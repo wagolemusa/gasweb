@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { getCustomers, newCustomer,getCustomerById, updateCustomer } from '../../../../backend/controllers/customerController';
+import { getCustomers, newCustomer,getCustomerById, updateCustomer, deleteCustomer } from '../../../../backend/controllers/customerController';
 
 // import { getOrders } from '../../../../backend/controllers/orderController';
 
@@ -22,6 +22,7 @@ router.use(isAuthenticatedUser).put(updateCustomer);
 router.use(isAuthenticatedUser).get(getCustomerById);
 router.use(isAuthenticatedUser).post(newCustomer);
 router.use(isAuthenticatedUser).get(getCustomers)
+router.use(isAuthenticatedUser).delete(deleteCustomer)
 
 
 export default router.handler();

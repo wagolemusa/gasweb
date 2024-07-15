@@ -13,8 +13,16 @@ const sellSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    category: {
+        type: String,
+        required: true
+    },
     amount: {
         type: Number,
+        required: true
+    },
+    datedata: {
+        type: String,
         required: true
     },
     time: {

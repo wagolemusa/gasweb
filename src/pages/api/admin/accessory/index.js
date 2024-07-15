@@ -7,7 +7,7 @@ import {
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
 
-import { newAccessory } from '../../../../backend/controllers/accessoryController';
+import { getAccessory, newAccessory } from '../../../../backend/controllers/accessoryController';
 
 
 
@@ -19,5 +19,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newAccessory);
+router.use(isAuthenticatedUser).get(getAccessory);
 
 export default router.handler();

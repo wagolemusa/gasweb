@@ -61,12 +61,14 @@ const NewGas = () => {
             <option value="3kgs">3kgs</option>
             <option value="6kgs">6kgs</option>
             <option value="12kgs">12kgs</option>
+            <option value="12.5kgs">12.5kgs</option>
             <option value="13kgs">13kgs</option>
             <option value="15kgs">15kgs</option>
             <option value="25kgs">25kgs</option>
             <option value="45kgs">45kgs</option>
         </select>
         <br/>
+
         <select class="form-select" aria-label="Default select example"
             name="category"
             value={category}
@@ -75,10 +77,7 @@ const NewGas = () => {
             <option selected>Category</option>
             <option value="Refill">Refill</option>
             <option value="Full Set">Full Set</option>
-        
         </select>
-
-
 
         <div className="grid md:grid-cols-2 gap-x-2 mt-3">
           <div className="mb-4">
@@ -116,8 +115,6 @@ const NewGas = () => {
             </div>
           </div>
           </div>
-
-
         <button
           type="submit"
           className="my-2 px-4 py-2 text-center inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 w-full"

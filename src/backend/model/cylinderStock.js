@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const cylinderStockSchema = mongoose.Schema({
 
-     branchName: {
+     branchname: {
         type: String,
         required: true
     },

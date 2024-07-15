@@ -5,9 +5,7 @@ import React, { useContext, useState } from "react";
 
 const Customer = () => {
   const { newCustomerCreate } = useContext(CustomerContext);
-
-
-
+  
   const [customer, setCustomer] = useState({
     name: "",
     phone: "",

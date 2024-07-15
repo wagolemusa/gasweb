@@ -1,8 +1,8 @@
-import Point from "../../../components/admin/Point"
+import ListPoint from "../../../components/admin/point/ListPoints"
 
 
 const pointPage = () =>{
-    return <Point />
+    return <ListPoint />
     
 }
 

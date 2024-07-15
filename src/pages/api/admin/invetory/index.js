@@ -6,7 +6,7 @@ import {
   
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
-import { newInventoryAccessory } from '../../../../backend/controllers/invetoryController';
+import { getInventoryInStock, newInventoryAccessory } from '../../../../backend/controllers/invetoryController';
 
 
 const router = createRouter({ 
@@ -17,5 +17,6 @@ dbConnect();
 
 
 router.use(isAuthenticatedUser).post(newInventoryAccessory);
+router.use(isAuthenticatedUser).get(getInventoryInStock);
 
 export default router.handler();

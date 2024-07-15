@@ -7,7 +7,6 @@ const Getcustomers = ({ data, id }) => {
 
     const { updateCustomer, updated, setUpdated, error } = useContext(CustomerContext);
 
-
     const [customer, setCustomer] = useState({
         name: data?.name,
         phone: data?.phone,
@@ -20,7 +19,6 @@ const Getcustomers = ({ data, id }) => {
         mapurl: data?.mapurl
 
     });
-
 
     useEffect(() => {
         if (updated) {

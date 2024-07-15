@@ -1,9 +1,9 @@
-import Company from "../../../components/admin/Company"
+import ListCompany from "../../../components/admin/company/ListCompany"
 
 
-const companyName = () =>{
-    return <Company />
+const companyList = () =>{
+    return <ListCompany />
     
 }
 
-export default companyName
+export default companyList

@@ -26,10 +26,13 @@ const NewProduct = () => {
   
 
   return (
-    <section className="container max-w-3xl p-6 mx-auto">
-      <h1 className="mb-3 text-xl md:text-3xl font-semibold text-black mb-8">
-        Create New Product
+    <section 
+    style={{ maxWidth: "700px" }}
+    className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
+       <h1 className=" mb-3 text-xl md:text-2xl font-semibold text-black">
+        <a href="/admin/products">Back</a> &nbsp;&nbsp;Post Accessories on the web
       </h1>
+
 
       <form onSubmit={submitHandler}>
         <div className="mb-4">
@@ -45,7 +48,7 @@ const NewProduct = () => {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-x-2 mt-5">
+        <div className="grid md:grid-cols-2 gap-x-2 mt-2">
           <div className="mb-4">
             <label className="block mb-1"> Price </label>
             <div className="relative">
@@ -64,7 +67,7 @@ const NewProduct = () => {
           </div>
         </div>
 
-        <div className="mb-4 mt-5">
+        <div className="mb-4 mt-2">
           <label className="block mb-1"> Description </label>
           <textarea
             rows="4"

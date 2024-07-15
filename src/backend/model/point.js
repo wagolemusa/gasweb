@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-
-
 const pointsSchema = mongoose.Schema({
     customerName: {
         type: String,
@@ -8,7 +6,7 @@ const pointsSchema = mongoose.Schema({
     },
     phone: {
         type: Number,
-        required: true
+        required: true,
     },
     cylinderSize: {
         type: String,
@@ -20,7 +18,7 @@ const pointsSchema = mongoose.Schema({
     },
     points: {
         type: Number, 
-        required: false
+        default: "0"
      },
     user: {
         type: mongoose.Schema.Types.ObjectId,

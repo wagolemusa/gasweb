@@ -1,8 +1,14 @@
-import Invetory from "../../../components/admin/Invetoryaccessory";
+import ListInvetory from "../../../components/admin/invetory/ListInvetory"
 
 
-const InvetoryPage = () => {
-    return <Invetory />
+const  ListPageInvetory =() => {
+
+    return <ListInvetory />
+
 }
+export default ListPageInvetory;
 
-export default InvetoryPage;
+
+
+
+

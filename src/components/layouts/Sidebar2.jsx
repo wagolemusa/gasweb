@@ -47,12 +47,7 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
         Users
     </a>
 </li>
-<li className='sidebar-list-item'>
-<BsFillGrid3X3GapFill className='icon'/> 
-    <a href="">
-       Categories
-    </a>
-</li>
+
 <li className='sidebar-list-item'>
 <BsPeopleFill className='icon'/>
     <a href="/admin/branch">
@@ -72,9 +67,21 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
     </a>
 </li>
 <li className='sidebar-list-item'>
+<BsMenuButtonWideFill className='icon'/>
+    <a href="/admin/installment">
+       Installments
+    </a>
+</li>
+<li className='sidebar-list-item'>
 <BsFillGearFill className='icon'/>
     <a href="/admin/points">
        Points
+    </a>
+</li>
+<li className='sidebar-list-item'>
+<BsFillGearFill className='icon'/>
+    <a href="/admin/referral">
+       Referral Points
     </a>
 </li>
 <li className='sidebar-list-item'>
@@ -100,11 +107,8 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
 <BiBookmarkAltPlus className='icon'/>
   <a class="dropbtn">Accesories</a>
   <div class="dropdown-content">
-  <a href="/admin/products/new">
-     Post Accesories
-    </a>
+    <a href="/admin/products">Post Accesories for Web</a>
     <a href="/admin/accessory">Accesory Category</a>
-    <a href="/admin/products">Accessory</a>
     <a href="/admin/invetory">New Invetory</a>
   </div>
   </li>
