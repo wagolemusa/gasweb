@@ -26,7 +26,7 @@ export  const getGasData = async(req, res, next) =>{
     const apiFilters = new APIFilters(Gas.find(), req.query)
     .search()
     .filter()
-    // const gasDeta = await Product.find();
+
     const gasDeta = await apiFilters.query.clone();
     const filterdProductsCount = gasDeta.length
     apiFilters.pagination(resPerPage);
