@@ -10,7 +10,7 @@ dbConnect();
 
 
 router.get(getAddress);
-router.get(updateAddress)
+router.put(updateAddress)
 
 
 export default router.handler();
