@@ -3,10 +3,10 @@
 import Link from "next/link";
 import React from "react";
 
-const UserAddresses = ({ addresses }) => {
+const UserAddresses = ({ data }) => {
   
   
-  return  addresses?.map((address) => (
+  return  data?.address?.map((address) => (
     <Link href={`/address/`}>
       <div className="mb-5 gap-4">
         <figure className="w-full flex align-center bg-gray-100 p-4 rounded-md cursor-pointer">

@@ -8,17 +8,17 @@ import { countries } from "countries-list";
 import Sidebar from "../layouts/Sidebar";
 import AuthContext from "../../context/AuthContext";
 
-const UpdateAddress = ({ id, address }) => {
+const UpdateAddress = ({ id, data }) => {
 
     const { error, UpdateAddress, updated, setUpdated, deleteAddress, clearErrors } = useContext(AuthContext)
 
     const countriesList = Object.values(countries);
-    const [ street, setStreet ] = useState(address.street);
-    const [ city, setCity ] = useState(address.city);
-    const [ state, setState ] = useState(address.state);
-    const [ zipCode, setZipCode] = useState(address.zipCode);
-    const [ phoneNo, setPhoneNo ] = useState(address.phoneNo);
-    const [ country, setCountry ] = useState(address.country);
+    const [ street, setStreet ] = useState(data.street);
+    const [ city, setCity ] = useState(data.city);
+    const [ state, setState ] = useState(data.state);
+    const [ zipCode, setZipCode] = useState(data.zipCode);
+    const [ phoneNo, setPhoneNo ] = useState(data.phoneNo);
+    const [ country, setCountry ] = useState(data.country);
 
     
     useEffect(() => {
