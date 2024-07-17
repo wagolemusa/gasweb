@@ -1,7 +1,7 @@
 import { createRouter } from 'next-connect';
 import dbConnect from "../../../backend/config/dbConnect";
 import onError from "../../../backend/middlewares/errors"
-import { webhook } from '../../../backend/controllers/orderControllers';
+import { webhook } from '../../../backend/controllers/orderController';
 // /backend/controllers/productController";
 
 

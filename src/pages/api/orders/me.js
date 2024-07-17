@@ -1,8 +1,8 @@
 import { createRouter } from 'next-connect';
 import dbConnect from "../../../backend/config/dbConnect";
 import onError from "../../../backend/middlewares/errors"
-import { myOrders } from '../../../backend/controllers/orderControllers';
 import { isAuthenticatedUser } from '../../../backend/middlewares/auth';
+import { myOrders } from '../../../backend/controllers/orderController';
 // /backend/controllers/productController";
 
 
