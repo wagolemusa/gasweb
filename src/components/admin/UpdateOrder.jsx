@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const UpdateOrder = ({ order }) => {
 
-    const { updateOrder, error, clearErrors, setUpdated } = useContext(OrderContext)
+    const { updateOrder, error, clearErrors, updated, setUpdated } = useContext(OrderContext)
 
     const [orderStatus, setOrderStatus] = useState(order?.orderStatus)
 

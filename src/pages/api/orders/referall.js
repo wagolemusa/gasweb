@@ -1,19 +1,19 @@
-import { createRouter } from 'next-connect';
-import dbConnect from "../../../backend/config/dbConnect";
-import onError from "../../../backend/middlewares/errors"
-// import { checkoutSession } from '../../../backend/controllers/orderControllers';
-import { referCode } from '../../../backend/controllers/orderPayController';
+// import { createRouter } from 'next-connect';
+// import dbConnect from "../../../backend/config/dbConnect";
+// import onError from "../../../backend/middlewares/errors"
+// // import { checkoutSession } from '../../../backend/controllers/orderControllers';
+// import { referCode } from '../../../backend/controllers/orderPayController';
 
-import { isAuthenticatedUser } from '../../../backend/middlewares/auth';
-// /backend/controllers/productController";
+// import { isAuthenticatedUser } from '../../../backend/middlewares/auth';
+// // /backend/controllers/productController";
 
 
-const router = createRouter({ 
-    onError,
- });
+// const router = createRouter({ 
+//     onError,
+//  });
 
-dbConnect();
+// dbConnect();
 
-router.use(isAuthenticatedUser).post(referCode)
+// router.use(isAuthenticatedUser).post(referCode)
 
-export default router.handler();
+// export default router.handler();
