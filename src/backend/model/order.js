@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import Address from "../model/address"
 
-const orderSchema = mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     
     shippingInfo: {
         type: mongoose.Schema.Types.ObjectId,

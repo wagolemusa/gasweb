@@ -6,7 +6,7 @@ import {
   
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
-import { deleteOrder, getOrder, updateOrder } from '../../../../backend/controllers/orderControllers';
+import { updateOrder, deleteOrder, getOrderByID } from '../../../../backend/controllers/orderController';
 
 
 
@@ -17,7 +17,7 @@ const router = createRouter({
 dbConnect();
 
 
-router.use(isAuthenticatedUser).get(getOrder);
+router.use(isAuthenticatedUser).get(getOrderByID);
 router.use(isAuthenticatedUser).put(updateOrder);
 router.use(isAuthenticatedUser).delete(deleteOrder);
 

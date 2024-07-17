@@ -6,7 +6,7 @@ import {
   
   isAuthenticatedUser,
 } from "../../../../backend/middlewares/auth";
-import { getOrder } from '../../../../backend/controllers/orderController';
+import {  getOrders } from '../../../../backend/controllers/orderController';
 
 
 const router = createRouter({ 
@@ -16,6 +16,6 @@ const router = createRouter({
 dbConnect();
 
 
-router.use(isAuthenticatedUser).get(getOrder);
+router.use(isAuthenticatedUser).get(getOrders);
 
 export default router.handler();
