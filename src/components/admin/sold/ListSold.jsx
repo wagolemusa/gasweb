@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState, Suspense} from "react";
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import '../../layouts/styles.css'
@@ -31,7 +31,7 @@ const ListSold = ({ id }) => {
 
   
     return (
-        <div className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
+        <Suspense className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
                 <h1 className="text-3xl my-5 ml-4 font-bold">
                  <Link href="/admin/sold/new" className="btn btn-primary">Make Sales of Accesories</Link>
 
@@ -81,7 +81,7 @@ const ListSold = ({ id }) => {
                     productsCount={data?.filteredProductsCount}
                 />
             </div>
-        </div>
+        </Suspense>
 
     );
 };

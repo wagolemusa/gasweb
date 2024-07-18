@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, Suspense } from "react";
 
 import CartContext from "../../context/CartContext";
 import Link from "next/link";
@@ -49,7 +49,7 @@ const Cart = () => {
 
 
   return (
-    <>
+    <Suspense>
       <section className="py-5 sm:py-7 bg-blue-100">
         <div className="container max-w-screen-xl mx-auto px-4">
           <h2 className="text-3xl font-semibold mb-2">
@@ -191,7 +191,7 @@ const Cart = () => {
           </div>
         </section>
       )}
-    </>
+    </Suspense>
   );
 };
 

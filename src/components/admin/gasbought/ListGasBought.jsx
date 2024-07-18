@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import { toast } from "react-toastify";
@@ -54,7 +54,7 @@ const ListGasBought = () => {
 
     return (
 
-        <div class="container">
+        <Suspense className="container">
              <h1 className="py-4 text-2xl pl-10 font-bold">Gas Bought From Companies</h1>
              <Link href="/admin/gasbought/new" className="btn btn-primary">Create Bought Gas Records</Link>
 
@@ -127,7 +127,7 @@ const ListGasBought = () => {
                 }
             </div>
 
-        </div>
+        </Suspense>
 
 
     )

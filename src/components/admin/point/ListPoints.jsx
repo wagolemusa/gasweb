@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useContext, useEffect, useState} from "react";
+import React, { useEffect, useState, Suspense} from "react";
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import '../../layouts/styles.css'
@@ -31,7 +31,7 @@ const ListPoint = ({ id }) => {
 
   
     return (
-        <div className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
+        <Suspense className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
                 <h1 className="text-3xl my-5 ml-4 font-bold">
                  <Link href="/admin/points/new" className="btn btn-primary">Give Points</Link>
 
@@ -101,7 +101,7 @@ const ListPoint = ({ id }) => {
                     productsCount={data?.filteredProductsCount}
                 />
             </div>
-        </div>
+        </Suspense>
 
     );
 };

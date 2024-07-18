@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState, Suspense} from "react";
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import '../../layouts/styles.css'
@@ -30,7 +30,7 @@ const ListReferral = () => {
 
 
 
-        <div className="customer relative overflow-x-auto shadow-md sm:rounded-lg">           
+        <Suspense className="customer relative overflow-x-auto shadow-md sm:rounded-lg">           
             <table className="table w-full text-sm text-left">
                 <thead className="text-l text-gray-700 uppercase">
                     <tr>
@@ -81,7 +81,7 @@ const ListReferral = () => {
                     productsCount={data?.filteredProductsCount}
                 />
             </div>
-        </div>
+        </Suspense>
 
     );
 };
