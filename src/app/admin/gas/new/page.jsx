@@ -1,9 +1,9 @@
 import NewGas from "../../../../components/admin/gaspost/Gas";
 
-const Gaspage = () => {
+const GaspageCreate = () => {
     return <NewGas />
 }
 
-export default Gaspage;
+export default GaspageCreate;
 
 
