@@ -1,10 +1,12 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import Image from "next/image";
 
 
-const Cardslide = () => {
+const 
+
+Cardslide = () => {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
 
@@ -25,7 +27,7 @@ const Cardslide = () => {
 
   return(
 
-    <div>
+    <Suspense>
       <div className='container'>
         <div className='row'>
        
@@ -59,7 +61,7 @@ const Cardslide = () => {
           </div>
 
       </div>
-    </div>
+    </Suspense>
   )
 }
 

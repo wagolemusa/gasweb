@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <Suspense
+    <div
       style={{ maxWidth: "480px" }}
       className="mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg"
     >
@@ -85,7 +85,7 @@ const Login = () => {
           </Link>
         </p>
       </form>
-    </Suspense>
+    </div>
   );
 };
 

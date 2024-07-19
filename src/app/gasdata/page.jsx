@@ -8,11 +8,11 @@ const getGass = async () => {
     return data;
 }
 
-const Allgass =  async() => {
+const Allgassdata =  async() => {
 
     const productsData = await getGass();
     return <Cardslide data={productsData} />
     
 }
 
-export default Allgass;
+export default Allgassdata;
