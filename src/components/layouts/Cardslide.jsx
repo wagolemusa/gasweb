@@ -4,16 +4,14 @@ import axios from "axios";
 import Image from "next/image";
 
 
-const 
-
-Cardslide = () => {
+const Cardslide = () => {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
 
   useEffect(() => {
       async function fetchData() {
           try {
-              const response = await axios.get("http://localhost:3000/api/gas");
+              const response = await axios.get('http://localhost:3000/api/gas');
               setData(response.data);
           } catch (error) {
               setError('Failed to fetch Data');
