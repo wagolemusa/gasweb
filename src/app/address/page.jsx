@@ -3,16 +3,16 @@ import axios from 'axios';
 import UserAddresses from "../../components/user/UserAddresses"
 
 
-const getGass = async () => {    
+const getaddres = async () => {    
     const { data } = await axios.get(`${process.env.ENVIRONMENT_URL}/api/address`);
     return data;
 }
 
-const Allgass =  async() => {
+const Addresdata =  async() => {
 
-    const getAddressData = await getGass();
+    const getAddressData = await getaddres();
     return <UserAddresses data={getAddressData} />
     
 }
 
-export default Allgass;
+export default Addresdata;

@@ -7,6 +7,7 @@ const UserAddresses = ({ data }) => {
   
   
   return  data?.address?.map((address) => (
+    <Suspense>
     <Link href={`/address/`}>
       <div className="mb-5 gap-4">
         <figure className="w-full flex align-center bg-gray-100 p-4 rounded-md cursor-pointer">
@@ -26,6 +27,7 @@ const UserAddresses = ({ data }) => {
         </figure>
       </div>
     </Link>
+    </Suspense>
   ))
 };
 
