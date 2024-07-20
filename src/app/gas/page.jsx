@@ -3,15 +3,10 @@ import axios from 'axios';
 import Cardslide from "../../components/gas/Cardslide";
 
 
-const getGass = async () => {    
-    const { data } = await axios.get(`${process.env.ENVIRONMENT_URL}/api/gasdata`);
-    return data;
-}
 
 const Allgassdata =  async() => {
 
-    const productsData = await getGass();
-    return <Cardslide data={productsData} />
+    return <Cardslide  />
     
 }
 
