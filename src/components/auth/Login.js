@@ -7,14 +7,13 @@ import { toast } from "react-toastify";
 import { useRouter, useSearchParams } from "next/navigation";
 import { parseCallbackUrl } from "../../helpers/helpers";
 
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
   const params = useSearchParams();
-  const callBackUrl = params.get('callbackUrl')
+  const callBackUrl = params.get('callbackUrl');
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -22,7 +21,7 @@ const Login = () => {
     const data = await signIn("credentials", {
       email,
       password,
-      callbackUrl: callBackUrl ? parseCallbackUrl(callBackUrl): "/",
+      callbackUrl: callBackUrl ? parseCallbackUrl(callBackUrl) : "/",
     });
 
     if (data?.error) {
@@ -39,8 +38,6 @@ const Login = () => {
       style={{ maxWidth: "480px" }}
       className="mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg"
     >
-
-      
       <form onSubmit={submitHandler}>
         <h2 className="mb-5 text-2xl font-semibold">Login</h2>
 

@@ -1,10 +1,16 @@
-import React from 'react'
-import Login from '../../components/auth/Login'
+
+import React, { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+const Login = dynamic(() => import('../../components/auth/Login'), { suspense: true });
+
 
 const LoginPage = () => {
     return (
         <>
-            <Login />
+           <Suspense fallback={<div>Loading...</div>}>
+                 <Login />
+      </Suspense>
         </>
     )
 }
