@@ -11,7 +11,7 @@ const Cardslide = () => {
   useEffect(() => {
       async function fetchData() {
           try {
-              const response = await axios.get('https://giggas-30bcd3403c62.herokuappdds.com/api/gas');
+              const response = await axios.get('https://giggas-30bcd3403c62.herokuapp.com/api/gas');
               setData(response.data);
           } catch (error) {
               setError('Failed to fetch Data');
