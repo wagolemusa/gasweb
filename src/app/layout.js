@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export const metadata = {
-  title: 'NPC',
-  description: 'CCTV, ICT and Electrical',
+  title: 'Gas, Banners, Grills',
+  description: 'Gas Banners, Grill',
 }
 
 export default function RootLayout({ children }) {
@@ -18,10 +18,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <GlobalProvider>
-        {/* <HeaderLine /> */}
         <Header3 />
-        {/* <Header /> */}
-        {/* <Header2 /> */}
+     
         {children}
         <Footer />
         </GlobalProvider>
