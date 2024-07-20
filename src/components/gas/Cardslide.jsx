@@ -21,7 +21,7 @@ const Cardslide = () => {
       fetchData()
   }, [])
 
-  console.log("bbb", data)
+ 
 
   return(
 

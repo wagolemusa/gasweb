@@ -2,9 +2,26 @@
 'use client'
 import Link from "next/link";
 import React from "react";
+import axios from "axios";
 
-const UserAddresses = ({ data }) => {
-  
+const UserAddresses = () => {
+
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+      async function fetchData() {
+          try {
+              const response = await axios.get('https://giggas-30bcd3403c62.herokuappdds.com/api/address');
+              setData(response.data);
+          } catch (error) {
+              setError('Failed to fetch Data');
+              console.error('Error fetching data', error)
+          }
+      }
+      fetchData()
+  }, [])
+
   
   return  data?.address?.map((address) => (
     <Suspense>
