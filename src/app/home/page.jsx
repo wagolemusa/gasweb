@@ -3,6 +3,7 @@ import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Services from '../../components/layouts/Services'
+import Cardslide from "../../components/gas/Cardslide";
 
 
 
