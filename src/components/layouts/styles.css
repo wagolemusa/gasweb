@@ -857,14 +857,41 @@ th{
   
 }
 
-.scroller {
-  /* width: 300px; */
-  /* padding-bottom: 20px; */
-  height: 900px;
-  overflow-y: scroll;
-  /* scrollbar-color: rebeccapurple green; */
-  scrollbar-width: thin;
+/* Gas Slide 6 */
+.slide6 {
+  width: 250px;
+  /* height: 500px; */
 }
+
+.slide6 img{
+  height: 280px;
+}
+
+
+.btnStep1 {
+  font-family: OpenSans-SemiBold;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 15.5rem;
+  height: 2.6rem;
+  line-height: 4.5rem;
+  background-color: rgb(39, 104, 245);
+  color: rgb(255, 255, 255);
+  letter-spacing: 0px;
+  white-space: pre;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* margin: 3rem 0.2rem 0.2rem; */
+  /* padding: 0.2rem; */
+  /* border-radius: 1rem; */
+  z-index: 1;
+  background-image: linear-gradient(270deg, rgb(13, 162, 255), rgb(13, 118, 255));
+  cursor: pointer;
+}
+
 
 
 .btnprice{
@@ -882,11 +909,6 @@ th{
 }
 
 /* End  of Gas bought  */
-
-
-
-
-
 
 @media screen and (max-width: 992px) {
   .grid-container {

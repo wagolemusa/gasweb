@@ -2,9 +2,12 @@
 
 import GasContext from "../../../context/GasContext";
 import React, { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const NewGas = () => {
   const { newGasCreate } = useContext(GasContext);
+
+  const router = useRouter();
 
   const [product, setProduct] = useState({
     productName: "",
@@ -24,6 +27,7 @@ const NewGas = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     newGasCreate(product);
+    router.replace("/admin/gas")
   };
   
 
