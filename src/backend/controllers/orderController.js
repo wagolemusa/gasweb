@@ -27,7 +27,7 @@ const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
 
 
 // Get orders by ID
-export const getOrder = async (req, res, next) => {
+export const getOrderByID = async (req, res, next) => {
   const order = await Order.findById(req.query.id).populate(
     "shippingInfo user"
   );

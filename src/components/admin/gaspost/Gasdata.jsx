@@ -1,7 +1,7 @@
 'use client'
 
 import axios from "axios"
-import React, { useEffect, useState, useContext} from "react"
+import React, { useEffect, useState, useContext, Suspense} from "react"
 import queryString from 'query-string'
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
@@ -41,7 +41,7 @@ const GetGasdata = (searchParams) => {
 
     return (
 
-        <div className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
+        <Suspense className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
                 <h1 className="text-3xl my-5 ml-4 font-bold">
                     ({ data?.productsCount}) <Link href="/admin/gas/new" className="btn btn-primary">Create Gas On Sale</Link>
 
@@ -129,7 +129,7 @@ const GetGasdata = (searchParams) => {
                     productsCount={data?.filteredProductsCount}
                 />
             </div>
-        </div>
+        </Suspense>
 
     );
 };

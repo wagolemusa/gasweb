@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState} from "react";
+import React, { useState, Suspense} from "react";
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import { toast } from "react-toastify";
@@ -40,7 +40,7 @@ const ListCustomer = ({ data }) => {
    
     return (
 
-        <div className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
+        <Suspense className="customer relative overflow-x-auto shadow-md sm:rounded-lg">
                 <h1 className="text-3xl my-5 ml-4 font-bold">
                     ({ data?.productsCount}) <Link href="/admin/customer/new" className="btn btn-primary">Create Customer</Link>
 
@@ -119,7 +119,7 @@ const ListCustomer = ({ data }) => {
                     productsCount={data?.filteredProductsCount}
                 />
             </div>
-        </div>
+        </Suspense>
 
     );
 };

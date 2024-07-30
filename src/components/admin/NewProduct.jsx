@@ -1,18 +1,21 @@
 "use client";
 
 import ProductContext from "../../context/ProductContext"
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const NewProduct = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const { newProduct } = useContext(ProductContext);
 
   const [product, setProduct] = useState({
     name: "",
     description: "",
     price: "",
+    category: "",
   });
 
-  const { name, description, price } = product;
+  const { name, description, price, category } = product;
 
   const onChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -24,6 +27,19 @@ const NewProduct = () => {
     newProduct(product);
   };
   
+  useEffect(() => {
+    async function fetchData(){
+        try{
+            const response = await axios.get('http://localhost:3000/api/admin/accessory');
+            setData(response.data);
+        } catch(error){
+            setError('Failed to fetch data');
+            console.error('Error fetching data:', error);
+        }
+    }
+    fetchData();
+}, []);
+
 
   return (
     <section 
@@ -47,6 +63,20 @@ const NewProduct = () => {
             required
           />
         </div>
+
+        <select data-mdb-select-init list="browsers3" class="select
+              border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                name="category"
+                value={category}
+                onChange={onChange}
+                required
+              >
+              <option>Select branch</option>
+                {data?.accessories?.map(( accessdata ) => (
+              <option>{accessdata?.name}</option>
+             ))}
+          </select>
+
 
         <div className="grid md:grid-cols-2 gap-x-2 mt-2">
           <div className="mb-4">

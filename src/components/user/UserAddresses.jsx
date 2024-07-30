@@ -1,12 +1,30 @@
 
 'use client'
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect} from "react";
+import axios from "axios";
 
-const UserAddresses = ({ addresses }) => {
+const UserAddresses = () => {
+
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+      async function fetchData() {
+          try {
+              const response = await axios.get('https://giggas-30bcd3403c62.herokuappdds.com/api/address');
+              setData(response.data);
+          } catch (error) {
+              setError('Failed to fetch Data');
+              console.error('Error fetching data', error)
+          }
+      }
+      fetchData()
+  }, [])
+
   
-  
-  return  addresses?.map((address) => (
+  return  data?.address?.map((address) => (
+    <Suspense>
     <Link href={`/address/`}>
       <div className="mb-5 gap-4">
         <figure className="w-full flex align-center bg-gray-100 p-4 rounded-md cursor-pointer">
@@ -26,6 +44,7 @@ const UserAddresses = ({ addresses }) => {
         </figure>
       </div>
     </Link>
+    </Suspense>
   ))
 };
 

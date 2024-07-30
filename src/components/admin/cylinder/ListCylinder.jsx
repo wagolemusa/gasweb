@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,Suspense } from "react";
 import Link from "next/link";
 import CustromPagination from "../../layouts/CustromPagination";
 import { toast } from "react-toastify";
@@ -54,7 +54,7 @@ const ListCylinder = () => {
 
     return (
 
-        <div class="container">
+        <Suspense className="container">
              <h1 className="py-4 text-2xl pl-10 font-bold">Cylinders Stocks to branchess</h1>
              <Link href="/admin/cylinder/new" className="btn btn-primary">Add Cylinders To Stock</Link>
 
@@ -126,7 +126,7 @@ const ListCylinder = () => {
                 }
             </div>
 
-        </div>
+        </Suspense>
 
 
     )

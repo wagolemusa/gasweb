@@ -29,9 +29,18 @@ const Sidebarnav  = ({openSidebarToggle, OpenSidebar}) => {
             <a href="/me" className='sidebar-brand'>
                 Dashboard
             </a>
+            
             <span className='icon close_icon' onClick={OpenSidebar}>X</span>
         </div>
 
+        <ul className='sidebar-list'>
+        <li className='sidebar-list-item'>
+        <BsGrid1X2Fill className='icon'/>
+            <a href="/address">
+            Address
+            </a>
+        </li>
+        </ul>
         {user?.role === 'admin' && (
 
 <ul className='sidebar-list'>

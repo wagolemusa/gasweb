@@ -1,6 +1,6 @@
 "use client";
 import CustomerContext from "../../../context/CustomerContext";
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, Suspense } from "react";
 import { toast } from "react-toastify";
 
 const Getcustomers = ({ data, id }) => {
@@ -53,7 +53,7 @@ const Getcustomers = ({ data, id }) => {
 
 
     return (
-        <section
+        <Suspense
             style={{ maxWidth: "700px" }}
             className="main2 mt-10 mb-20 p-4 md:p-7 mx-auto rounded bg-white shadow-lg">
             <a href="/admin/customer">Back</a>
@@ -70,7 +70,7 @@ const Getcustomers = ({ data, id }) => {
 
 
             </ul>
-        </section>
+        </Suspense>
     );
 };
 

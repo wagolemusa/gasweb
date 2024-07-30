@@ -26,7 +26,7 @@ export  const getGasData = async(req, res, next) =>{
     const apiFilters = new APIFilters(Gas.find(), req.query)
     .search()
     .filter()
-    // const gasDeta = await Product.find();
+
     const gasDeta = await apiFilters.query.clone();
     const filterdProductsCount = gasDeta.length
     apiFilters.pagination(resPerPage);
@@ -64,7 +64,7 @@ export const query6kgs = async(req, res) =>{
 
 // query all 12kgs where set 12kgs
 export const query12kgs = async(req, res) =>{
-    const get12kgs = await Gas.find({ size: "big" })
+    const get12kgs = await Gas.find({ cylinderSize: { $in: ["12kgs", "13kgs", "12.5kgs"] } });
     return res.status(201).json({
         get12kgs
     })

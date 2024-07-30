@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, Suspense } from "react";
 import CustromPagination  from '../layouts/CustromPagination'
 import OrderContext from "../../context/OrderContext";
 import { toast } from "react-toastify";
@@ -21,7 +21,7 @@ const Orders = ({ orders }) => {
   }
   return (
  
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <Suspense className="relative overflow-x-auto shadow-md sm:rounded-lg">
               <h1 className="text-3xl my-5 ml-4 font-bold">{orders?.ordersCount} Orders</h1>
               <table className="w-full text-sm text-left">
                 <thead className="text-l text-gray-700 uppercase">
@@ -76,7 +76,7 @@ const Orders = ({ orders }) => {
                 productsCount={orders?.ordersCount}
               />
               </div>
-            </div>
+            </Suspense>
  
   );
 };

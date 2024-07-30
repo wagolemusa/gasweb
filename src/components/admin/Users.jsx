@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,Suspense } from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import AuthContext from "../../context/AuthContext";
@@ -21,7 +21,7 @@ const Users = ({ data }) => {
     };
   
     return (
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <Suspense className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <h1 className="text-3xl my-5 ml-4 font-bold">
           {data?.users?.length} Users
         </h1>
@@ -78,7 +78,7 @@ const Users = ({ data }) => {
             />
           </div>
         )}
-      </div>
+      </Suspense>
     );
   };
   
