@@ -2,6 +2,7 @@
 
 import ProductContext from "../../context/ProductContext"
 import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const NewProduct = () => {
   const [data, setData] = useState(null);
@@ -39,7 +40,6 @@ const NewProduct = () => {
     }
     fetchData();
 }, []);
-
 
   return (
     <section 
