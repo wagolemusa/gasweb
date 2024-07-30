@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const Cardslide = () => {
+const Cylinder12kgs = () => {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   // const progressCircle = useRef(null);
@@ -23,7 +23,7 @@ const Cardslide = () => {
   useEffect(() => {
       async function fetchData() {
           try {
-              const response = await axios.get('http://localhost:3000/api/gas');
+              const response = await axios.get('http://localhost:3000/api/gas/12kgs');
               setData(response.data);
           } catch (error) {
               setError('Failed to fetch Data');
@@ -85,9 +85,9 @@ const Cardslide = () => {
               }
             }}
           >
-            { data?.get6kgs?.map((gas6kg) =>(
+            { data?.get12kgs?.map((gas6kg) =>(
             <SwiperSlide>
-              <div className="slide6 max-w-sm rounded overflow-hidden shadow-lg w-48">
+              <div className="slide12 max-w-sm rounded overflow-hidden shadow-lg w-48">
                 <Image
                   src={
                     gas6kg?.images[0]
@@ -123,7 +123,7 @@ const Cardslide = () => {
 }
 
 
-export default Cardslide
+export default Cylinder12kgs
 
 
 

@@ -2,7 +2,7 @@
 import React from "react";
 
 import Cardslide from "../../components/gas/Cardslide";
-import SwiperComponent from "../../components/layouts/swiper"
+import Cylinder12kgs from "../../components/gas/12kgasClyinder"
 // import HomeSlide from "../../components/layouts/homeSlide"
 const Home = () => {
 
@@ -13,7 +13,7 @@ const Home = () => {
          
           <Cardslide />
           <br/>  <br/>  <br/>
-          <SwiperComponent />
+          <Cylinder12kgs/>
           
         </div>
     )

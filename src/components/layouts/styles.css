@@ -867,6 +867,15 @@ th{
   height: 280px;
 }
 
+.slide12{
+  width: 250px;
+  /* width: 550px; */
+}
+
+.slide12 img{
+  height: 500px;
+  /* width: 150px; */
+}
 
 .btnStep1 {
   font-family: OpenSans-SemiBold;
