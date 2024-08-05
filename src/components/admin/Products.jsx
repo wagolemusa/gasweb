@@ -35,7 +35,7 @@ const Products = ({ data }) => {
                             Name
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Stock
+                            Category
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Price
@@ -49,7 +49,7 @@ const Products = ({ data }) => {
                     {data?.products?.map(( product ) => (
                         <tr className="bg-white">
                         <td className="px-6 py-2">{product?.name}</td>
-                        <td className="px-6 py-2">{product?.stock}</td>
+                        <td className="px-6 py-2">{product?.category}</td>
                         <td className="px-6 py-2">{product?.price}</td>
                         <td className="px-6 py-2">
                             <div>
@@ -58,7 +58,7 @@ const Products = ({ data }) => {
                                     className="px-2 py-2 inline-block text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 cursor-pointer mr-2"
                                 >
                                     {/* <i className="fa fa-image" aria-hidden="true"></i> */}
-                                    View
+                                    Upload-Image
                                 </Link>
 
                                 <Link

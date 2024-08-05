@@ -15,12 +15,11 @@ export const newProduct = async (req, res, next) => {
     });
   };
 
+
 // Get All products
 export  const getProducts = async(req, res, next) =>{
-
     const resPerPage = 1
     const productsCount = await Product.countDocuments()
-
     const apiFilters = new APIFilters(Product.find(), req.query)
     .search()
     .filter()
@@ -28,7 +27,6 @@ export  const getProducts = async(req, res, next) =>{
     const products = await apiFilters.query.clone();
     const filterdProductsCount = products.length
     apiFilters.pagination(resPerPage);
-
     res.status(200).json({
         productsCount,
         resPerPage,
@@ -53,7 +51,6 @@ export const getProduct = async(req, res, next) => {
 
 // Query three Data
 export const querythreeProduct = async(req, res, next) => {
-
     const product = await Product.find().sort({_id: -1}).limit(3)
     if(!product){
         res.status(400).json({
@@ -66,19 +63,33 @@ export const querythreeProduct = async(req, res, next) => {
 }
 
 
+// query all Gas Cookers
+export const queryGasCooker = async(req, res) =>{
+    const gasCooker = await Product.find({ category: {$in: ["Gas Cookers", "Electric cookers"]}});
+    return res.status(201).json({
+        gasCooker
+    })
+}
+
+
+// query all Gas Cookers
+export const querybanners = async(req, res) =>{
+    const gasBanner = await Product.find({ category: {$in: ["Regulator", "Banners", "Horse pipe", "Grills"]}});
+    return res.status(201).json({
+        gasBanner
+    })
+}
+
+
 // upload multiple images
 export const uploadProductImages = async(req, res, next) => {
-
     let product = await Product.findById(req.query.id);
-
     if(!product){
         res.status(404).json({
             error: "Product not found"
         })
     }
-
     const uploader = async(path) => await uploads(path, "npc");
-    
     const urls = []
     const files = req.files;
 

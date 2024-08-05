@@ -78,6 +78,8 @@ export const queryPromo = async(req, res) =>{
     })
 }
 
+
+
 // update Products
 export const updateGas = async(req, res, next) => {
     let gas = await Gas.findById(req.query.id);
