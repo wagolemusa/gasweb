@@ -44,13 +44,19 @@ const Shipping = ({ addresses }) => {
   );
 
 
-  const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
-  const totalAmount = (Number(amountWithoutTax) + Number(taxAmount)).toFixed(2);
+  // const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
+
+  // const taxAmount = amountWithoutTax
+
+  
+
+  const totalAmount = (Number(amountWithoutTax))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+ 
 
   const checkoutHandlerPay = () => {
     const data = {
       amount: amountWithoutTax,
-      tax: taxAmount,
       totalAmount
     }
 
@@ -81,7 +87,7 @@ const Shipping = ({ addresses }) => {
                      <label class="flex p-3 border border-gray-200 rounded-md bg-gray-50 hover:border-blue-400 hover:bg-blue-50 cursor-pointer"
                      onClick={() => setShippingAddress(address)}
                      >
-                   
+
                     <span>
                       <input
                         name="shipping"
@@ -92,17 +98,18 @@ const Shipping = ({ addresses }) => {
                     <p class="ml-2">
                       <span>{address.street}</span>
                       <small class="block text-sm text-gray-400">
-                       {address.city}, {address.zipCode}
+                       <b>Phone</b>:  {address.phoneNo}<br/> 
+                       <b>Area</b>:  {address.locationArea}
                         <br />
-                        {address.country}
+                        <b>Description</b>:  {address.describeLocation}
                         <br />
-                        {address.phone}
+                        <b>Map Url</b>:  {address.mapurl}
                       </small>
                     </p>
                   </label>
                     ))}
        
-                </div>
+              </div>
 
                 <Link
                   href="/address/new"
@@ -132,15 +139,12 @@ const Shipping = ({ addresses }) => {
                 <ul>
                   <li className="flex justify-between mb-1">
                     <span>Amount:</span>
-                    <span>${cart?.checkoutInfo?.amount}</span>
+                    <span>UGX {cart?.checkoutInfo?.amount}</span>
                   </li>
-                  <li className="flex justify-between mb-1">
-                    <span>Est TAX:</span>
-                    <span>${cart?.checkoutInfo?.tax}</span>
-                  </li>
+            
                   <li className="border-t flex justify-between mt-3 pt-3">
                     <span>Total Amount:</span>
-                    <span className="text-gray-900 font-bold">${cart?.checkoutInfo?.totalAmount}</span>
+                    <span className="text-gray-900 font-bold">UGX {cart?.checkoutInfo?.totalAmount}</span>
                   </li>
                 </ul>
 
@@ -166,7 +170,7 @@ const Shipping = ({ addresses }) => {
                     </div>
                     <figcaption class="ml-3">
                       <p>{item.name.substring(0, 50)}</p>
-                      <p class="mt-1 text-gray-400">Total: ${item.quantity * item.price}</p>
+                      <p class="mt-1 text-gray-400">Total: UGX {item.quantity * item.price}</p>
                     </figcaption>
                     </figure>
                   ))}    

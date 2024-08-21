@@ -10,6 +10,7 @@ import CartContext from "../../context/CartContext";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from 'next/link';
 
 const Banner = () => {
   const [data, setData] = useState(null);
@@ -57,7 +58,7 @@ const Banner = () => {
             spaceBetween={30}
             navigation
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
+            // scrollbar={{ draggable: true }}
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -85,8 +86,16 @@ const Banner = () => {
               {data?.gasBanner?.map((gas6kg) => (
                 <SwiperSlide key={gas6kg._id}>
                   <div className="col-md">
-                    <div className="product-card">
-                      <button className="btnStep1" onClick={() => addToCartHandler(gas6kg)}>Add To Cart</button>
+                
+                    <div className="product-card1">
+                    <div className="cylinder6kgs">
+                    <div className="cyrefill">UGX {gas6kg?.price}</div>
+                    <button className="btnStep1" onClick={() => addToCartHandler(gas6kg)}>Add To Cart</button>
+                  </div>
+                  <Link
+                    href={`/product/${gas6kg._id}`}
+                    className="hover:text-blue-600"
+                  >
                       <Image
                         src={
                           gas6kg?.images[0]
@@ -97,13 +106,13 @@ const Banner = () => {
                         height="240"
                         width="240"
                       />
-                      <div className='font-bold'>{gas6kg.category}</div>
-                      <div className="font-bold text-xl py-3">{gas6kg?.name}</div>
+                      {/* <div className='font-bold'>{gas6kg.category}</div> */}
+                      <div className="font-bold text-xl py-2">{gas6kg?.name.slice(0, 20)}</div>
+                      </Link>
                     </div>
+                   
                   </div>
-                  <div className="cylinder6kgs">
-                    <div className="cyrefill">UGX {gas6kg?.price}</div>
-                  </div>
+                 
                 </SwiperSlide>
               ))}
             </div>

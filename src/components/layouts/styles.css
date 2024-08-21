@@ -1007,6 +1007,11 @@ th{
   color: #000000;
 }
 
+/* image size */
+
+.product-card1 img{
+  height: 250px;
+}
 
 /* End  of Gas bought  */
 

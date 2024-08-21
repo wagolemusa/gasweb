@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState, Suspense, useRef } from "react";
+import React, { useEffect, useState, Suspense, useRef, useContext } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,6 +9,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Link from "next/link";
+
+import CartContext from "../../context/CartContext";
 
 const Cardslide = () => {
   const [data, setData] = useState(null)
@@ -32,7 +35,22 @@ const Cardslide = () => {
       }
       fetchData()
   }, [])
-  // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
+ 
+
+  const { addItemToCart } = useContext(CartContext);
+
+  // Add to cart function
+  const addToCartHandler = (product) => {
+    addItemToCart({
+      product: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0].url,
+      stock: product.stock,
+      seller: product.seller,
+    });
+  };
+
  
   return(
 
@@ -92,6 +110,16 @@ const Cardslide = () => {
             <SwiperSlide>
               {/* <div className="slide6 max-w-sm rounded overflow-hidden shadow-lg w-48"> */}
               <div className="product-card">
+                    <div className="cylinder6kgs">
+                    <div className="cyrefill">UGX {gas6kg?.price}</div>
+                    <button className="btnStep1" onClick={() => addToCartHandler(gas6kg)}>Add To Cart</button>
+                  </div>
+
+              <Link
+                    href={`/product/${gas6kg._id}`}
+                    className="hover:text-blue-600"
+                  >
+
                 <Image
                   src={
                     gas6kg?.images[0]
@@ -103,17 +131,15 @@ const Cardslide = () => {
                   width="240"
                 />
                   
-                  <div className="font-bold text-xl py-3">{gas6kg?.productName} &nbsp;  {gas6kg?.cylinderSize}</div>
+                  <div className="font-bold text-xl py-3">{gas6kg?.name} &nbsp;  {gas6kg?.cylinderSize}</div>
                   
                   <div class="pt-2 pb-10">
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2  line-through">UGX {gas6kg?.price}</span>
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2  ">UGX {gas6kg?.discount}</span>
                   </div>
+                  </Link>
                 </div>
-                <div className="cylinder6kgs">
-                  <div className="cyrefill">UGX  {gas6kg?.price}</div>
-                  <button className="btnStep1">Add To Cart</button>
-                </div>
+           
                 </SwiperSlide>
               ))}
               

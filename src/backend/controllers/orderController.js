@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
 
 
   export const getOrders = async (req, res) => {
-    const resPerPage = 2;
+    const resPerPage = 100;
     const ordersCount = await Order.countDocuments();
 
     const apiFilters = new APIFilters(Order.find(), req.query).pagination(
@@ -38,6 +38,28 @@ export const getOrderByID = async (req, res, next) => {
   res.status(200).json({
     order,
   });
+};
+
+
+//  query order for are  specific user
+export const getUserOrders = async (req, res) => {
+  try {
+    if (!req.user || !req.user._id) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    // Find addresses associated with the authenticated user
+    const order = await Order.find({ user: req.user._id })
+                                  .populate('user') // Populate the user field if needed
+                                  .exec(); // Execute the query
+    // Return the addresses
+    res.status(200).json({
+      order
+    })
+    
+  } catch (err) {
+    console.error('Error fetching addresses:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 };
 
 

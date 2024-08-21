@@ -30,11 +30,12 @@ const amountWithoutTax = cart?.cartItems?.reduce(
   0
 );
 
-const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
+// const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
 
-const totalAmount = (Number(amountWithoutTax) + Number(taxAmount)).toFixed(2);
+const totalAmount = (Number(amountWithoutTax));
 
-const tax = taxAmount;
+// const tax = taxAmount;
+
 const amount = amountWithoutTax;
 
 const points = 2000
@@ -51,7 +52,6 @@ console.log("userrrrr", referralcode)
           `${process.env.ENVIRONMENT_URL}/api/orders/checkoutPay`,
           {
               
-              tax: tax,
               amount: amount,
               totalAmount: totalAmount,
               user,
@@ -91,7 +91,9 @@ console.log("userrrrr", referralcode)
           <div className="flex flex-col md:flex-row gap-4 lg:gap-8">
             <main className="md:w-2/3">
               <article className="border border-gray-200 bg-white shadow-sm rounded p-4 lg:p-6 mb-5">
-                <h2 class="text-xl font-semibold mb-5">Shipping information pay</h2>
+                <h2 class="text-xl font-semibold mb-5">Shipping information for easy delivery </h2>
+                 <h3 className="text-xl text-red-600 font-semibold">Free Delivery To Your Door Step</h3>
+
 
                 <div class="grid sm:grid-cols-2 gap-4 mb-6">
                     {addresses?.map((address) => (
@@ -109,17 +111,20 @@ console.log("userrrrr", referralcode)
                     <p class="ml-2">
                       <span>{address.street}</span>
                       <small class="block text-sm text-gray-400">
-                       {address.city}, {address.zipCode}
+                       <b>Phone</b>:  {address.phoneNo}<br/> 
+                       <b>Area</b>:  {address.locationArea}
                         <br />
-                        {address.country}
+                        <b>Description</b>:  {address.describeLocation}
                         <br />
-                        {address.phone}
+                        <b>Map Url</b>:  {address.mapurl}
                       </small>
                     </p>
                   </label>
                     ))}
        
                 </div>
+
+      
 
                 <Link
                   href="/address/new"
@@ -138,7 +143,7 @@ console.log("userrrrr", referralcode)
                   <a className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
                     onClick={submitHandlerpay}
                   >
-                    Make Payment
+                    pay on Delivery
                   </a>
                 </div>
               </article>
@@ -149,15 +154,15 @@ console.log("userrrrr", referralcode)
                 <ul>
                   <li className="flex justify-between mb-1">
                     <span>Amount:</span>
-                    <span>${cart?.checkoutInfo?.amount}</span>
+                    <span>UGX {cart?.checkoutInfo?.amount}</span>
                   </li>
                   <li className="flex justify-between mb-1">
-                    <span>Est TAX:</span>
-                    <span>${cart?.checkoutInfo?.tax}</span>
+                    {/* <span>Est TAX:</span> */}
+                    {/* <span>${cart?.checkoutInfo?.tax}</span> */}
                   </li>
                   <li className="border-t flex justify-between mt-3 pt-3">
                     <span>Total Amount:</span>
-                    <span className="text-gray-900 font-bold">${cart?.checkoutInfo?.totalAmount}</span>
+                    <span className="text-gray-900 font-bold">UGX {cart?.checkoutInfo?.totalAmount}</span>
                   </li>
                 </ul>
 
@@ -183,7 +188,7 @@ console.log("userrrrr", referralcode)
                     </div>
                     <figcaption class="ml-3">
                       <p>{item.name.substring(0, 50)}</p>
-                      <p class="mt-1 text-gray-400">Total: ${item.quantity * item.price}</p>
+                      <p class="mt-1 text-gray-400">Total: UGX {item.quantity * item.price}</p>
                     </figcaption>
                     </figure>
                   ))}    

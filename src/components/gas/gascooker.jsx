@@ -2,16 +2,18 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import React, { useEffect, useState, Suspense, useRef } from "react";
+import React, { useEffect, useState, Suspense, useContext } from "react";
 import axios from "axios";
 import Image from "next/image";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from 'next/link';
 
 // import './styles.css';
 
+import CartContext from "../../context/CartContext";
 
 
 const Gascooker = () => {
@@ -31,6 +33,19 @@ const Gascooker = () => {
     fetchData()
   }, [])
 
+  const { addItemToCart } = useContext(CartContext);
+
+  // Add to cart function
+  const addToCartHandler = (product) => {
+    addItemToCart({
+      product: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0].url,
+      stock: product.stock,
+      seller: product.seller,
+    });
+  };
 
 
   return (
@@ -56,7 +71,7 @@ const Gascooker = () => {
 
         navigation
         pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        // scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
 
@@ -89,9 +104,17 @@ const Gascooker = () => {
             {data?.gasCooker?.map((gas6kg) => (
                <SwiperSlide>
               <div className="col-md">
-                <div className="product-card">
+                <div className="product-card1">
 
-                  {/* <div className="slide12 max-w-sm rounded overflow-hidden shadow-lg w-48"> */}
+                <div className="product-card1">
+                    <div className="cylinder6kgs">
+                    <div className="cyrefill">UGX {gas6kg?.price}</div>
+                    <button className="btnStep1" onClick={() => addToCartHandler(gas6kg)}>Add To Cart</button>
+                  </div>
+                  <Link
+                    href={`/product/${gas6kg._id}`}
+                    className="hover:text-blue-600"
+                  >
                   <Image
                     src={
                       gas6kg?.images[0]
@@ -103,14 +126,13 @@ const Gascooker = () => {
                     width="240"
                   />
                     <div className='font-bold'>{gas6kg.category}</div>
-                  <div className="font-bold text-xl py-3">{gas6kg?.name} </div>
-                  
+                  <div className="font-bold text-xl py-3">{gas6kg?.name.slice(0, 18)} </div>
+                  </Link>
                 </div>
+               
               </div>
-              <div className="cylinder6kgs">
-                  <div className="cyrefill">UGX  {gas6kg?.price}</div>
-                  <button className="btnStep1">Add To Cart</button>
-                </div>
+              </div>
+       
             </SwiperSlide>
             ))}
           </div>

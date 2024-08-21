@@ -36,6 +36,7 @@ export  const getProducts = async(req, res, next) =>{
 }
 
 
+
 // Get product by Id
 export const getProduct = async(req, res, next) => {
     const product = await Product.findById(req.query.id);
@@ -48,6 +49,33 @@ export const getProduct = async(req, res, next) => {
         product,
     })
 }
+
+// query all 6kgs where set on top
+export const query6kgs = async(req, res) =>{
+    const get6kgs = await Product.find({ size: "6kgs"}) // and seton: "top"
+    return res.status(201).json({
+        get6kgs
+    })
+}
+
+
+// query all 12kgs where set 12kgs
+export const query12kgs = async(req, res) =>{
+    const get12kgs = await Product.find({ size: { $in: ["12kgs", "13kgs", "12.5kgs"] } });
+    return res.status(201).json({
+        get12kgs
+    })
+}
+
+// query all where promoation is on
+export const queryPromo = async(req, res) =>{
+    const getPro = await Product.find({ promotion: "on" })
+    return res.status(201).json({
+        getPro
+    })
+}
+
+
 
 // Query three Data
 export const querythreeProduct = async(req, res, next) => {
@@ -74,7 +102,7 @@ export const queryGasCooker = async(req, res) =>{
 
 // query all Gas Cookers
 export const querybanners = async(req, res) =>{
-    const gasBanner = await Product.find({ category: {$in: ["Regulator", "Banners", "Horse pipe", "Grills", "Refill"]}});
+    const gasBanner = await Product.find({ category: {$in: ["Regulator", "Banners", "Horse pipe", "Grills"]}});
     return res.status(201).json({
         gasBanner
     })
