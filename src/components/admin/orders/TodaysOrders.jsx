@@ -6,7 +6,7 @@ import CustromPagination  from '../layouts/CustromPagination'
 import OrderContext from "../../context/OrderContext";
 import { toast } from "react-toastify";
 
-const Orders = ({ orders }) => {
+const TodaysOrders = ({ orders }) => {
   const { deleteOrder, error, clearErrors } = useContext(OrderContext)
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const Orders = ({ orders }) => {
   );
 };
 
-export default Orders;
+export default TodaysOrders;
 
 
 

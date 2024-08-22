@@ -3,7 +3,9 @@ import Stripe from "stripe";
 import Order from '../model/order'
 import APIFilters from "../utils/APIFilters"
 import ErrorHandler from "../utils/errorHandler";
+import moment from 'moment'; // Import moment for date handling
 const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
+
 
 
 
@@ -15,13 +17,161 @@ const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
       resPerPage
     );
   const orders = await apiFilters.query.find()
-    .populate("shippingInfo user");
+    .populate("shippingInfo user")
+    .sort({createAt: -1})
 
   res.status(200).json({
     ordersCount,
     resPerPage,
     orders,
   });
+};
+
+
+
+//  query today's  shipped orders 
+export const getOrdersToday = async (req, res) => {
+  try {
+    const resPerPage = 100;
+
+    // Get today's date range
+    const startOfDay = moment().startOf('day').toDate();
+    const endOfDay = moment().endOf('day').toDate();
+
+    // Count documents with today's date and status 'shipped'
+    const ordersCount = await Order.countDocuments({
+      createAt: { $gte: startOfDay, $lte: endOfDay },
+      orderStatus: 'Shipped'
+    });
+
+    // Create the API filters with pagination
+    const apiFilters = new APIFilters(Order.find({
+      createAt: { $gte: startOfDay, $lte: endOfDay },
+      orderStatus: 'Shipped'
+    }), req.query).pagination(resPerPage);
+
+    // Execute the query with populated fields
+    const orders = await apiFilters.query.find()
+      .populate('shippingInfo user')
+      .sort({createAt: -1})
+
+    // Return the response
+    res.status(200).json({
+      ordersCount,
+      resPerPage,
+      orders,
+    });
+    
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
+//  query today's  Processing  orders 
+export const getOrderProcessing = async (req, res) => {
+  try {
+    const resPerPage = 100;
+
+    // Get today's date range
+    const startOfDay = moment().startOf('day').toDate();
+    const endOfDay = moment().endOf('day').toDate();
+
+    // Count documents with today's date and status 'shipped'
+    const ordersCount = await Order.countDocuments({
+      createAt: { $gte: startOfDay, $lte: endOfDay },
+      orderStatus: 'Processing'
+    });
+
+    // Create the API filters with pagination
+    const apiFilters = new APIFilters(Order.find({
+      createAt: { $gte: startOfDay, $lte: endOfDay },
+      orderStatus: 'Processing'
+    }), req.query).pagination(resPerPage);
+
+    // Execute the query with populated fields
+    const orders = await apiFilters.query.find()
+      .populate('shippingInfo user')
+      .sort({createAt: -1});
+
+    // Return the response
+    res.status(200).json({
+      ordersCount,
+      resPerPage,
+      orders,
+    });
+    
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+//  query all  shipped  orders 
+export const getOrderAllShipped = async (req, res) => {
+  try {
+    const resPerPage = 20;
+
+    // Count documents with today's date and status 'shipped'
+    const ordersCount = await Order.countDocuments({
+      orderStatus: 'Shipped'
+    });
+
+    // Create the API filters with pagination
+    const apiFilters = new APIFilters(Order.find({
+      orderStatus: 'Shipped'
+    }), req.query).pagination(resPerPage);
+
+    // Execute the query with populated fields
+    const orders = await apiFilters.query.find()
+      .populate('shippingInfo user')
+      .sort({createAt: -1});
+
+    // Return the response
+    res.status(200).json({
+      ordersCount,
+      resPerPage,
+      orders,
+    });
+    
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+//  query all  Processing  orders 
+export const getOrderAllProcessing = async (req, res) => {
+  try {
+    const resPerPage = 20;
+
+    // Count documents with today's date and status 'shipped'
+    const ordersCount = await Order.countDocuments({
+      orderStatus: 'Processing'
+    });
+
+    // Create the API filters with pagination
+    const apiFilters = new APIFilters(Order.find({
+      orderStatus: 'Processing'
+    }), req.query).pagination(resPerPage);
+
+    // Execute the query with populated fields
+    const orders = await apiFilters.query.find()
+      .populate('shippingInfo user')
+      .sort({createAt: -1});
+
+    // Return the response
+    res.status(200).json({
+      ordersCount,
+      resPerPage,
+      orders,
+    });
+    
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 };
 
 
@@ -50,6 +200,7 @@ export const getUserOrders = async (req, res) => {
     // Find addresses associated with the authenticated user
     const order = await Order.find({ user: req.user._id })
                                   .populate('user') // Populate the user field if needed
+                                  .sort({createAt: -1})
                                   .exec(); // Execute the query
     // Return the addresses
     res.status(200).json({

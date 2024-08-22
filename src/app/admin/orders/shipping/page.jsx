@@ -4,9 +4,9 @@ import { cookies } from "next/headers";
 
 import queryString from "query-string";
 
-import Orders from "../../../components/admin/orders/Orders"
+import ShippedData from "../../../../components/admin/orders/Shipped"
 
-const getOrders = async (searchParams) => {
+const getOrdersShipped = async (searchParams) => {
   const nextCookies = cookies();
 
   const nextAuthSessionToken = nextCookies.get("next-auth.session-token");
@@ -18,7 +18,7 @@ const getOrders = async (searchParams) => {
   const searchQuery = queryString.stringify(urlParams);
 
   const { data } = await axios.get(
-    `${process.env.ENVIRONMENT_URL}/api/admin/orders?${searchQuery}`,
+    `${process.env.ENVIRONMENT_URL}/api/admin/orders/shipped?${searchQuery}`,
     {
       headers: {
         Cookie: `next-auth.session-token=${nextAuthSessionToken?.value}`,
@@ -29,10 +29,10 @@ const getOrders = async (searchParams) => {
   return data;
 };
 
-const AdminOrdersPage = async ({ searchParams }) => {
-  const orders = await getOrders(searchParams);
+const AdminOrdersPageData = async ({ searchParams }) => {
+  const orders = await getOrdersShipped(searchParams);
 
-  return <Orders orders={orders} />;
+  return <ShippedData orders={orders} />;
 };
 
-export default AdminOrdersPage;
+export default AdminOrdersPageData;
