@@ -73,7 +73,6 @@ export const getOrdersToday = async (req, res) => {
 export const getOrderProcessing = async (req, res) => {
   try {
     const resPerPage = 100;
-
     // Get today's date range
     const startOfDay = moment().startOf('day').toDate();
     const endOfDay = moment().endOf('day').toDate();

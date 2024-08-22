@@ -30,8 +30,8 @@ const Orders = ({ orders }) => {
 
               <a href="/admin/orders/shipping" className="btn btn-primary">Shipped Orders</a>&nbsp; &nbsp;
               <a href="/admin/orders/todayorder" className="btn btn-success">today's orders</a>&nbsp; &nbsp;
-              <a href="/admin/orders/shipping" className="btn btn-info">All shipped Orders</a>&nbsp; &nbsp;
-              <a href="/admin/orders/shipping" className="btn btn-warning">All processing Orders</a>
+              <a href="/admin/orders/shippingAll" className="btn btn-info">All shipped Orders</a>&nbsp; &nbsp;
+              <a href="/admin/orders/processAll" className="btn btn-warning">All processing Orders</a>
               <table className="table w-full text-sm text-left">
                 <thead className="text-l text-gray-700 uppercase">
                   <tr>
