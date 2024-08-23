@@ -35,15 +35,17 @@ const Cylinder12kgs = () => {
   const { addItemToCart } = useContext(CartContext)
 
     // Add to cart function
-    const addToCartHandler = () => {
+    const addToCartHandler = (product) => {
       addItemToCart({
-        gas: data?.get12kgs?._id,
-        productName: data?.get12kgs.productName,
-        price: data?.get12kgs?.price,
-        // image: data?.get12kgs?.images[0].url,
-        cylinderSize: data?.get12kgs?.cylinderSize
-      })
-    }
+        product: product._id,
+        name: product.name,
+        price: product.price,
+        image: product.images[0].url,
+        stock: product.stock,
+        seller: product.seller,
+      });
+    };
+  
 
   return(
 
@@ -136,12 +138,7 @@ const Cylinder12kgs = () => {
                 </SwiperSlide>
               ))}
               
-               {/* <div className="autoplay-progress" slot="container-end"> */}
-                {/* <svg viewBox="0 0 48 48" ref={progressCircle}>
-                  <circle cx="24" cy="24" r="20"></circle>
-                </svg> */}
-                {/* <span ref={progressContent}></span> */}
-              {/* </div> */}
+            
         </Swiper>
         </div>
     </Suspense>
