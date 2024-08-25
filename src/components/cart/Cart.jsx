@@ -32,14 +32,14 @@ const Cart = () => {
     0
   );
 
-  const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
+  // const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
 
-  const totalAmount = (Number(amountWithoutTax) + Number(taxAmount)).toFixed(2);
+  const totalAmount = (Number(amountWithoutTax) );
 
   const checkoutHandler = () => {
     const data = {
       amount: amountWithoutTax,
-      tax: taxAmount,
+      // tax: taxAmount,
       totalAmount
     }
     saveOnCheckout(data)
@@ -82,7 +82,7 @@ const Cart = () => {
                               </p>
                               <p className="mt-1 text-gray-400">
                                 {" "}
-                                Seller: {cartItem.seller}
+                                {/* Seller: {cartItem.seller} */}
                               </p>
                             </figcaption>
                           </figure>
@@ -123,7 +123,7 @@ const Cart = () => {
                             </p>
                             <small className="text-gray-400">
                               {" "}
-                              ${cartItem.price} / per item{" "}
+                              {/* ${cartItem.price} / per item{" "} */}
                             </small>
                           </div>
                         </div>
@@ -163,10 +163,10 @@ const Cart = () => {
                         (Units)
                       </span>
                     </li>
-                    <li className="flex justify-between text-gray-600  mb-1">
+                    {/* <li className="flex justify-between text-gray-600  mb-1">
                       <span>TAX:</span>
                       <span>${taxAmount}</span>
-                    </li>
+                    </li> */}
                     <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
                       <span>Total price:</span>
                       <span>${totalAmount}</span>

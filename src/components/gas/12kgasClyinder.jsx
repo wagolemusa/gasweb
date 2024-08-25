@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Link from "next/link";
 
 const Cylinder12kgs = () => {
   const [data, setData] = useState(null)
@@ -34,15 +35,17 @@ const Cylinder12kgs = () => {
   const { addItemToCart } = useContext(CartContext)
 
     // Add to cart function
-    const addToCartHandler = () => {
+    const addToCartHandler = (product) => {
       addItemToCart({
-        gas: data?.get12kgs?._id,
-        productName: data?.get12kgs.productName,
-        price: data?.get12kgs?.price,
-        // image: data?.get12kgs?.images[0].url,
-        cylinderSize: data?.get12kgs?.cylinderSize
-      })
-    }
+        product: product._id,
+        name: product.name,
+        price: product.price,
+        image: product.images[0].url,
+        stock: product.stock,
+        seller: product.seller,
+      });
+    };
+  
 
   return(
 
@@ -101,7 +104,16 @@ const Cylinder12kgs = () => {
             <SwiperSlide>
               {/* <div className="slide12 max-w-sm rounded overflow-hidden shadow-lg w-48"> */}
               <div className="product-card12">
-              <button className="btnStep1" onClick={addToCartHandler} >Add To Cart</button>
+              
+                    <div className="cylinder6kgs">
+                    <div className="cyrefill">UGX {gas6kg?.price}</div>
+                    <button className="btnStep1" onClick={() => addToCartHandler(gas6kg)}>Add To Cart</button>
+                  </div>
+            
+              <Link
+                    href={`/product/${gas6kg._id}`}
+                    className="hover:text-blue-600"
+                  >
                 <Image
                   src={
                     gas6kg?.images[0]
@@ -113,27 +125,20 @@ const Cylinder12kgs = () => {
                   width="240"
                 />
                   
-                  <div className="font-bold text-xl py-3">{gas6kg?.productName} &nbsp;  {gas6kg?.cylinderSize}</div>
+                  <div className="font-bold text-xl py-3">{gas6kg?.name} &nbsp;  {gas6kg?.cylinderSize}</div>
                   
                   <div class="pt-2 pb-10">
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2  line-through">UGX {gas6kg?.price}</span>
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2  ">{gas6kg?.category}</span>
                   </div>
+                  </Link>
                 </div>
-                <div className="cylinder6kgs">
-                  <div className="cyrefill">UGX  {gas6kg?.discount}</div>
-                </div>
-              
-
+               
+            
                 </SwiperSlide>
               ))}
               
-               {/* <div className="autoplay-progress" slot="container-end"> */}
-                {/* <svg viewBox="0 0 48 48" ref={progressCircle}>
-                  <circle cx="24" cy="24" r="20"></circle>
-                </svg> */}
-                {/* <span ref={progressContent}></span> */}
-              {/* </div> */}
+            
         </Swiper>
         </div>
     </Suspense>

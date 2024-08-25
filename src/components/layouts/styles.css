@@ -24,6 +24,15 @@ body{
   color: red;
 }
 
+.navba6 {
+  background-color: #ffffff;
+  }
+
+  .navba6 a {
+    color: #000;
+    font-weight: 600;
+    }
+
 .navhead a {
  color: #5a5757;;
  text-decoration: none;
@@ -1007,6 +1016,11 @@ th{
   color: #000000;
 }
 
+/* image size */
+
+.product-card1 img{
+  height: 250px;
+}
 
 /* End  of Gas bought  */
 

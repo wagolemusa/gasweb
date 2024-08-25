@@ -7,6 +7,8 @@ import CartContext from '../../context/CartContext'
 import NewReview from "../review/NewReview";
 import OrderContext from "../../context/OrderContext";
 import Reviews from "../review/Reviews";
+import Banner from "../gas/banner";
+import Gascooker from "../gas/gascooker";
 
 
 const ProductDetails = ({ product }) => {
@@ -124,7 +126,7 @@ const ProductDetails = ({ product }) => {
                 <button className="px-4 py-2 inline-block text-white bg-blue-600 border border-transparent 
                   rounded-md hover:bg-blue-700"
                   onClick={addToCartHandler}
-                  disabled={!inStock}
+                  // disabled={!inStock}
                 >
                   <i className="fa fa-shopping-cart mr-2"></i>
                   Add to cart
@@ -141,35 +143,14 @@ const ProductDetails = ({ product }) => {
                     <span className="text-red-500">Out of Stock</span>
                   )}
                 </li>
-                <li className="mb-1">
-                  {" "}
-                  <b className="font-medium w-36 inline-block">Category:</b>
-                  <span className="text-gray-500">{product?.category}</span>
-                </li>
-                <li className="mb-1">
-                  {" "}
-                  <b className="font-medium w-36 inline-block">
-                    Seller / Brand:
-                  </b>
-                  <span className="text-gray-500">{product?.seller}</span>
-                </li>
+             
+          
               </ul>
             </main>
           </div>
-
-        
-          {/* <NewReview /> */}
-          {/* {canReview && <NewReview product={product} />} */}
-          <hr />
-
-          <div className="font-semibold">
-            <h1 className="text-gray-500 review-title mb-6 mt-10 text-2xl">
-              Other Customers Reviews
-            </h1>
-            
-            <Reviews reviews={product?.reviews} />
-          </div>
         </div>
+        <Banner />
+        <Gascooker />
       </section>
     </>
   );

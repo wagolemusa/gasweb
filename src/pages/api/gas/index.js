@@ -1,7 +1,7 @@
 import { createRouter } from 'next-connect';
 import dbConnect from "../../../backend/config/dbConnect";
 import onError from "../../../backend/middlewares/errors"
-import { query6kgs, query12kgs } from '../../../backend/controllers/gasController';
+import { query6kgs, query12kgs } from '../../../backend/controllers/productController';
 
 const router = createRouter( { onError });
 

@@ -29,8 +29,6 @@ const getOrders = async (searchParams) => {
 const MyOrdersPage = async () => {
   const orders = await getOrders()
 
-  console.log("orders", orders)
-
   return <ListOrders orders={orders} />;
 }
 

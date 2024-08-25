@@ -36,16 +36,17 @@ const OrderItem = ({ order }) => {
           <p className="text-gray-400 mb-1">Delivery address</p>
           <ul className="text-gray-600">
             <li>{order?.shippingInfo?.street}</li>
-            <li>{order?.shippingInfo?.city} {order?.shippingInfo?.state} {order?.shippingInfo?.zipCode}</li>
-            <li>{order?.shippingInfo?.country}</li>
+            <li>{order?.shippingInfo?.phoneNo} <br/>{order?.shippingInfo?.locationArea} {order?.shippingInfo?.zipCode}</li>
+            <li>{order?.shippingInfo?.mapurl}</li>
+            <li>{order?.shippingInfo?.describeLocation}</li>
           </ul>
         </div>
         <div>
           <p className="text-gray-400 mb-1">Payment</p>
           <ul className="text-gray-600">
-            <li className="text-green-400">PAID</li>
-            <li>Tax paid: ${order.tax}</li>
-            <li>Total paid: ${order.totalAmount} </li>
+            {/* <li className="text-green-400">PAID</li>
+            <li>Tax paid: ${order.tax}</li> */}
+            <li>Total paid: UGX {order.totalAmount} </li>
           </ul>
         </div>
       </div>
@@ -64,7 +65,7 @@ const OrderItem = ({ order }) => {
             </div>
             <figcaption className="ml-3">
               <p>{item.name.substring(0, 35)}</p>
-              <p className="mt-1 font-semibold">{item.quantity}x = ${item.price * item.quantity}</p>
+              <p className="mt-1 font-semibold">{item.quantity}x = {item.price * item.quantity}</p>
             </figcaption>
             </figure>
         ))}
